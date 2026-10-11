@@ -1,0 +1,1031 @@
+"Entity/Table Name","Table Name","Attribute Name","Column Name","Column Comment","Attribute Definition","Attribute/Column Is FK","Attribute/Column Is PK","Column Null_Option","Column Data Type"
+CLAIM,CLAIM,claim_key,claim_key,,,false,true,Not Null,BIGINT
+CLAIM,CLAIM,region_name,region_name,edw_preprod.dbo.map_claim_edw_No_Match,edw_preprod.dbo.map_claim_edw_No_Match,false,false,Null,STRING(50)
+CLAIM,CLAIM,source_system_code,source_system_code,,,false,false,Null,STRING(255)
+CLAIM,CLAIM,policy_key,policy_key,edw_preprod.dbo.map_claim_edw_No_Match,edw_preprod.dbo.map_claim_edw_No_Match,true,false,Not Null,BIGINT
+CLAIM,CLAIM,policy_number,policy_number,edw_preprod.dbo.map_policy_direct_PLCY_NBR,edw_preprod.dbo.map_policy_direct_PLCY_NBR,false,false,Null,STRING(80)
+CLAIM,CLAIM,assured_code,assured_code,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_CD,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_CD,false,false,Null,STRING(255)
+CLAIM,CLAIM,broker_code,broker_code,edw_preprod.dbo.ATT_BRKR_EDW_BRKR_CD,edw_preprod.dbo.ATT_BRKR_EDW_BRKR_CD,false,false,Null,STRING(255)
+CLAIM,CLAIM,claim_number,claim_number,from source ebao - claim_number - from source premium - claim - Check as per source to uniquely identify a business key of a single Claim case at the highest level.,from source ebao - claim_number - from source premium - claim - Check as per source to uniquely identify a business key of a single Claim case at the highest level.,false,false,Null,STRING(255)
+CLAIM,CLAIM,catastrophe_name,catastrophe_name,Databricks DIM_CLAIM catastrophe_name,Databricks DIM_CLAIM catastrophe_name,false,false,Null,STRING()
+CLAIM,CLAIM,insurance_type_description,insurance_type_description,edw_preprod.dbo.map_claim_edw_INSURANCE_TYPE_DESC,edw_preprod.dbo.map_claim_edw_INSURANCE_TYPE_DESC,false,false,Null,STRING()
+CLAIM,CLAIM,incident_description,incident_description,edw_preprod.dbo.map_claim_edw_INCIDENT_DESC,edw_preprod.dbo.map_claim_edw_INCIDENT_DESC,false,false,Null,STRING()
+CLAIM,CLAIM,claim_coverage_confirmation_description,claim_coverage_confirmation_description,databricks DIM_CLAIM,databricks DIM_CLAIM,false,false,Null,STRING()
+CLAIM,CLAIM,claim_duty_to_defend_description,claim_duty_to_defend_description,edw_preprod.dbo.map_claim_edw_DUTY_TO_DEFEND_DESC,edw_preprod.dbo.map_claim_edw_DUTY_TO_DEFEND_DESC,false,false,Null,STRING()
+CLAIM,CLAIM,claim_litigated_indicator,claim_litigated_indicator,iVOS only,iVOS only,false,false,Null,VARCHAR(10)
+CLAIM,CLAIM,claim_latest_note_add_date,claim_latest_note_add_date,"aw_dev.ivos.notepad.ADD_DATE	
+ aw_dev.ivos.notepad_ADD_DATE","aw_dev.ivos.notepad.ADD_DATE	
+ aw_dev.ivos.notepad_ADD_DATE",false,false,Null,DATE
+CLAIM,CLAIM,claim_latest_note_edit_date,claim_latest_note_edit_date,aw_dev.ivos.notepad.EDIT_DATE aw_dev.ivos.notepad_EDIT_DATE,aw_dev.ivos.notepad.EDIT_DATE aw_dev.ivos.notepad_EDIT_DATE,false,false,Null,DATE
+CLAIM,CLAIM,claim_made_timestamp,claim_made_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM,CLAIM,claim_latest_trial_date,claim_latest_trial_date,"aw_dev.ivos.LITIGATION_CALENDAR - WHEN LIT_CAL_TYPE.LITIGATION_CALENDAR_TYPE_DESC = 'Trial Date' THEN LIT_CAL.CALENDAR_DATE
+ aw_dev.ivos.LITIGATION_CALENDAR_CALENDAR_DATE","aw_dev.ivos.LITIGATION_CALENDAR - WHEN LIT_CAL_TYPE.LITIGATION_CALENDAR_TYPE_DESC = 'Trial Date' THEN LIT_CAL.CALENDAR_DATE
+ aw_dev.ivos.LITIGATION_CALENDAR_CALENDAR_DATE",false,false,Null,DATE
+CLAIM,CLAIM,claim_latest_mediation_arbitration_date,claim_latest_mediation_arbitration_date,"aw_dev.ivos.LITIGATION_CALENDAR - WHEN LIT_CAL_TYPE.LITIGATION_CALENDAR_TYPE_DESC = 'Mediation/Arbitration' THEN LIT_CAL.CALENDAR_DATE
+ aw_dev.ivos.LITIGATION_CALENDAR_CALENDAR_DATE","aw_dev.ivos.LITIGATION_CALENDAR - WHEN LIT_CAL_TYPE.LITIGATION_CALENDAR_TYPE_DESC = 'Mediation/Arbitration' THEN LIT_CAL.CALENDAR_DATE
+ aw_dev.ivos.LITIGATION_CALENDAR_CALENDAR_DATE",false,false,Null,DATE
+CLAIM,CLAIM,claim_name,claim_name,edw_preprod.dbo.map_claim_edw_CLM_NAME,edw_preprod.dbo.map_claim_edw_CLM_NAME,false,false,Null,STRING()
+CLAIM,CLAIM,claim_severity_code,claim_severity_code,iVOS only edw_preprod.dbo.map_claim_edw_SEVERITY_CODE,iVOS only edw_preprod.dbo.map_claim_edw_SEVERITY_CODE,false,false,Null,STRING()
+CLAIM,CLAIM,claim_status_code,claim_status_code,iVos only edw_preprod.dbo.map_claim_edw_CLM_STATUS_CD,iVos only edw_preprod.dbo.map_claim_edw_CLM_STATUS_CD,false,false,Null,STRING()
+CLAIM,CLAIM,claim_type_code,claim_type_code,edw_preprod.dbo.map_claim_edw_CLM_TYPE_CD,edw_preprod.dbo.map_claim_edw_CLM_TYPE_CD,false,false,Null,STRING()
+CLAIM,CLAIM,origin_branch_code,origin_branch_code,edw_preprod.dbo.map_claim_edw_ORIGIN_BRCH_CD,edw_preprod.dbo.map_claim_edw_ORIGIN_BRCH_CD,false,false,Null,STRING()
+CLAIM,CLAIM,insurance_type_code,insurance_type_code,edw_preprod.dbo.map_claim_edw_INSURANCE_TYPE_CODE,edw_preprod.dbo.map_claim_edw_INSURANCE_TYPE_CODE,false,false,Null,STRING()
+CLAIM,CLAIM,event_timestamp,event_timestamp,[awacus_claim].[t_clm_case].accident_time in eBAO,[awacus_claim].[t_clm_case].accident_time in eBAO,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM,CLAIM,loss_cause_code,loss_cause_code,edw_preprod.dbo.map_claim_edw_LOSS_CAUSE_CD,edw_preprod.dbo.map_claim_edw_LOSS_CAUSE_CD,false,false,Null,STRING()
+CLAIM,CLAIM,loss_cause_name,loss_cause_name,edw_preprod.dbo.map_claim_edw_LOSS_CAUSE_NAME,edw_preprod.dbo.map_claim_edw_LOSS_CAUSE_NAME,false,false,Null,STRING()
+CLAIM,CLAIM,loss_broker_reference_2_text,loss_broker_reference_2_text,edw_preprod.dbo.map_claim_edw_LOSS_BRKR_REF2,edw_preprod.dbo.map_claim_edw_LOSS_BRKR_REF2,false,false,Null,STRING()
+CLAIM,CLAIM,loss_broker_reference_1_text,loss_broker_reference_1_text,edw_preprod.dbo.map_claim_edw_LOSS_BRKR_REF1,edw_preprod.dbo.map_claim_edw_LOSS_BRKR_REF1,false,false,Null,STRING()
+CLAIM,CLAIM,denial_reason_text,denial_reason_text,edw_preprod.dbo.map_claim_edw_DNL_RSN_NAME,edw_preprod.dbo.map_claim_edw_DNL_RSN_NAME,false,false,Null,STRING()
+CLAIM,CLAIM,integrated_occurrence_code,integrated_occurrence_code,edw_preprod.dbo.map_claim_edw_INTGRTD_OCC_CD,edw_preprod.dbo.map_claim_edw_INTGRTD_OCC_CD,false,false,Null,STRING()
+CLAIM,CLAIM,date_loss_qualifier_code,date_loss_qualifier_code,"Sample values:
+Unconfirmed
+Uncoded
+Occurrence
+Claims Made
+Not classified at this level
+ edw_preprod.dbo.map_claim_edw_DT_LOSS_QUAL_CD","Sample values:
+Unconfirmed
+Uncoded
+Occurrence
+Claims Made
+Not classified at this level
+ edw_preprod.dbo.map_claim_edw_DT_LOSS_QUAL_CD",false,false,Null,STRING()
+CLAIM,CLAIM,narrative_group_code,narrative_group_code,"Sample Values not limited to below:
+t:\claims\narr\000071564.DOC
+t:\claims\narr\000041298.DOC
+t:\claims\narr\000055224.DOC
+t:\claims\narr\000046920.DOC
+ edw_preprod.dbo.map_claim_edw_NRTV_GRP_CD","Sample Values not limited to below:
+t:\claims\narr\000071564.DOC
+t:\claims\narr\000041298.DOC
+t:\claims\narr\000055224.DOC
+t:\claims\narr\000046920.DOC
+ edw_preprod.dbo.map_claim_edw_NRTV_GRP_CD",false,false,Null,STRING()
+CLAIM,CLAIM,underwriting_line_type_code,underwriting_line_type_code,edw_preprod.dbo.map_claim_edw_UA_LN_TYPE,edw_preprod.dbo.map_claim_edw_UA_LN_TYPE,false,false,Null,STRING()
+CLAIM,CLAIM,major_part_type_code,major_part_type_code,"Sample values:
+Not classified at this level
+1
+
+-9999
+ edw_preprod.dbo.map_claim_edw_MJR_PART_TYPE_CD","Sample values:
+Not classified at this level
+1
+
+-9999
+ edw_preprod.dbo.map_claim_edw_MJR_PART_TYPE_CD",false,false,Null,STRING()
+CLAIM,CLAIM,major_part_type_name,major_part_type_name,"Sample Values:
+
+
+Uncoded
+Not classified at this level
+-9999
+Inward
+ edw_preprod.dbo.map_claim_edw_MJR_PART_TYPE","Sample Values:
+
+
+Uncoded
+Not classified at this level
+-9999
+Inward
+ edw_preprod.dbo.map_claim_edw_MJR_PART_TYPE",false,false,Null,STRING()
+CLAIM,CLAIM,part_group_number,part_group_number,edw_preprod.dbo.map_claim_edw_PART_GRP_NBR,edw_preprod.dbo.map_claim_edw_PART_GRP_NBR,false,false,Null,STRING(255)
+CLAIM,CLAIM,advise_type_qualifier,advise_type_qualifier,edw_preprod.dbo.map_claim_edw_ADVISE_TYPE_QUALIFIER,edw_preprod.dbo.map_claim_edw_ADVISE_TYPE_QUALIFIER,false,false,Null,STRING(255)
+CLAIM,CLAIM,claim_latest_mail_sent_date,claim_latest_mail_sent_date,"aw_dev.ivos.claim_mail.sent_date
+
+ aw_dev.ivos.claim_mail_sent_date","aw_dev.ivos.claim_mail.sent_date
+
+ aw_dev.ivos.claim_mail_sent_date",false,false,Null,DATE
+CLAIM,CLAIM,claim_latest_mail_received_date,claim_latest_mail_received_date,aw_dev.ivos.claim_mail.Received_date aw_dev.ivos.claim_mail_Received_date,aw_dev.ivos.claim_mail.Received_date aw_dev.ivos.claim_mail_Received_date,false,false,Null,DATE
+CLAIM,CLAIM,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM,CLAIM,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM,CLAIM,record_insert_user_identifier,record_insert_user_identifier,edw_preprod.dbo.map_claim_edw_No_Match,edw_preprod.dbo.map_claim_edw_No_Match,false,false,Null,VARCHAR(20)
+CLAIM,CLAIM,record_update_user_identifier,record_update_user_identifier,edw_preprod.dbo.map_claim_edw_No_Match,edw_preprod.dbo.map_claim_edw_No_Match,false,false,Null,VARCHAR(20)
+CLAIM,CLAIM,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+CLAIM,CLAIM,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM,CLAIM,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM,CLAIM,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+CLAIM,CLAIM,record_hashkey,record_hashkey,edw_preprod.dbo.map_claim_edw_No_Match,edw_preprod.dbo.map_claim_edw_No_Match,false,false,Null,BIGINT
+CLAIM,CLAIM,claim_status_derived,claim_status_derived,aw_qa.reporting.claims_snapshot.claim_status_derived,aw_qa.reporting.claims_snapshot.claim_status_derived,false,false,Null,STRING
+CLAIM,CLAIM,claim_creator,claim_creator,aw_qa.reporting.claims_snapshot.claim_creator,aw_qa.reporting.claims_snapshot.claim_creator,false,false,Null,STRING
+CLAIM,CLAIM,subrogation_name,subrogation_name,aw_qa.reporting.claims_snapshot.subrogation_name,aw_qa.reporting.claims_snapshot.subrogation_name,false,false,Null,STRING
+CLAIM,CLAIM,ivos_date_of_loss,ivos_date_of_loss,aw_qa.reporting.claims_snapshot.ivos_date_of_loss,aw_qa.reporting.claims_snapshot.ivos_date_of_loss,false,false,Null,STRING
+CLAIM,CLAIM,unified_action_severity_code,unified_action_severity_code,aw_qa.reporting.claims_snapshot.unified_action_severity_code,aw_qa.reporting.claims_snapshot.unified_action_severity_code,false,false,Null,STRING
+SUBCLAIM,SUBCLAIM,subclaim_key,subclaim_key,edw_preprod.dbo.map_claim_edw_No_Match,edw_preprod.dbo.map_claim_edw_No_Match,false,true,Not Null,BIGINT
+SUBCLAIM,SUBCLAIM,region_name,region_name,edw_preprod.dbo.map_claim_edw_No_Match,edw_preprod.dbo.map_claim_edw_No_Match,false,false,Null,STRING(50)
+SUBCLAIM,SUBCLAIM,source_system_code,source_system_code,edw_preprod.dbo.map_claim_edw_No_Match,edw_preprod.dbo.map_claim_edw_No_Match,false,false,Null,STRING(255)
+SUBCLAIM,SUBCLAIM,claim_master_key,claim_master_key,,,true,false,Not Null,BIGINT
+SUBCLAIM,SUBCLAIM,catastrophe_event_key,catastrophe_event_key,,,true,false,Not Null,BIGINT
+SUBCLAIM,SUBCLAIM,claimant_key,claimant_key,edw_preprod.dbo.map_claim_edw_No_Match,edw_preprod.dbo.map_claim_edw_No_Match,true,false,Not Null,BIGINT
+SUBCLAIM,SUBCLAIM,claim_handler_key,claim_handler_key,edw_preprod.dbo.map_claim_edw_No_Match,edw_preprod.dbo.map_claim_edw_No_Match,true,false,Not Null,BIGINT
+SUBCLAIM,SUBCLAIM,claim_code,parent_subclaim_code,edw_preprod.dbo.map_claim_edw_CLM_CD,edw_preprod.dbo.map_claim_edw_CLM_CD,false,false,Null,STRING()
+SUBCLAIM,SUBCLAIM,subclaim_code,subclaim_code,edw_preprod.dbo.map_claim_edw_CLM_SECT_CD,edw_preprod.dbo.map_claim_edw_CLM_SECT_CD,false,false,Null,STRING(80)
+SUBCLAIM,SUBCLAIM,subclaim_name,subclaim_name,edw_preprod.dbo.map_claim_edw_CLM_SECT_NAME,edw_preprod.dbo.map_claim_edw_CLM_SECT_NAME,false,false,Null,STRING()
+SUBCLAIM,SUBCLAIM,subclaim_status_code,subclaim_status_code,edw_preprod.dbo.map_claim_edw_CLM_STATUS_CD,edw_preprod.dbo.map_claim_edw_CLM_STATUS_CD,false,false,Null,STRING()
+SUBCLAIM,SUBCLAIM,subclaim_status_name,subclaim_status_name,edw_preprod.dbo.map_claim_edw_CLM_STATUS_CD,edw_preprod.dbo.map_claim_edw_CLM_STATUS_CD,false,false,Null,STRING()
+SUBCLAIM,SUBCLAIM,damage_description_text,damage_description_text,AW_SRC.ebao.claim_t_clm_object_damage_desc,AW_SRC.ebao.claim_t_clm_object_damage_desc,false,false,Null,STRING()
+SUBCLAIM,SUBCLAIM,insured_object_text,insured_object_text,"eBAO = claim_t_clm_fi_vehicle can be used to determine the vehicle
+iVOS = MVI_VEHICLE eBAO = claim_t_clm_fi_vehicle can be used to determine the vehicle
+iVOS = MVI_VEHICLE_No_Match","eBAO = claim_t_clm_fi_vehicle can be used to determine the vehicle
+iVOS = MVI_VEHICLE eBAO = claim_t_clm_fi_vehicle can be used to determine the vehicle
+iVOS = MVI_VEHICLE_No_Match",false,false,Null,STRING(255)
+SUBCLAIM,SUBCLAIM,accident_timestamp,accident_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM,SUBCLAIM,claimant_code,claimant_code,edw_preprod.dbo.map_claim_edw_CLMT_CODE,edw_preprod.dbo.map_claim_edw_CLMT_CODE,false,false,Null,STRING()
+SUBCLAIM,SUBCLAIM,claim_handler_code,claim_handler_code,edw_preprod.dbo.map_claim_edw_CLM_HNDLR_CD,edw_preprod.dbo.map_claim_edw_CLM_HNDLR_CD,false,false,Null,STRING()
+SUBCLAIM,SUBCLAIM,action_code,action_code,edw_preprod.dbo.map_claim_edw_ACTN_CD,edw_preprod.dbo.map_claim_edw_ACTN_CD,false,false,Null,STRING()
+SUBCLAIM,SUBCLAIM,loss_area_code,loss_area_code,edw_preprod.dbo.map_claim_edw_LOSS_AREA_CD,edw_preprod.dbo.map_claim_edw_LOSS_AREA_CD,false,false,Null,STRING()
+SUBCLAIM,SUBCLAIM,loss_area_name,loss_area_name,edw_preprod.dbo.map_claim_edw_LOSS_AREA_NAME,edw_preprod.dbo.map_claim_edw_LOSS_AREA_NAME,false,false,Null,STRING()
+SUBCLAIM,SUBCLAIM,subclaim_severity_code,subclaim_severity_code,edw_preprod.dbo.map_claim_edw_SEVERITY_CODE,edw_preprod.dbo.map_claim_edw_SEVERITY_CODE,false,false,Null,STRING()
+SUBCLAIM,SUBCLAIM,handling_branch_code,handling_branch_code,edw_preprod.dbo.map_claim_edw_HNDL_BRNCH_CD,edw_preprod.dbo.map_claim_edw_HNDL_BRNCH_CD,false,false,Null,STRING()
+SUBCLAIM,SUBCLAIM,subrogation_code,subrogation_code,edw_preprod.dbo.map_claim_edw_SBRGTN_CD,edw_preprod.dbo.map_claim_edw_SBRGTN_CD,false,false,Null,STRING()
+SUBCLAIM,SUBCLAIM,first_movement_last_movement_code,first_movement_last_movement_code,edw_preprod.dbo.map_claim_edw_FRST_MVMT_LST_MVD_CD,edw_preprod.dbo.map_claim_edw_FRST_MVMT_LST_MVD_CD,false,false,Null,STRING()
+SUBCLAIM,SUBCLAIM,authorized_by_name,authorized_by_name,edw_preprod.dbo.map_claim_edw_AUTH_BY_NAME,edw_preprod.dbo.map_claim_edw_AUTH_BY_NAME,false,false,Null,STRING()
+SUBCLAIM,SUBCLAIM,last_movement_timestamp,last_movement_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM,SUBCLAIM,last_update_timestamp,last_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM,SUBCLAIM,next_review_timestamp,next_review_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM,SUBCLAIM,subclaim_closed_timestamp,subclaim_closed_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM,SUBCLAIM,last_seen_timestamp,last_seen_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM,SUBCLAIM,last_updated_underwriter_name,last_updated_underwriter_name,edw_preprod.dbo.map_claim_edw_ULU_NAME,edw_preprod.dbo.map_claim_edw_ULU_NAME,false,false,Null,STRING()
+SUBCLAIM,SUBCLAIM,attachment_timestamp,attachment_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM,SUBCLAIM,loss_from_timestamp,loss_from_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM,SUBCLAIM,loss_to_timestamp,loss_to_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM,SUBCLAIM,advised_timestamp,advised_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM,SUBCLAIM,start_timestamp,start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM,SUBCLAIM,end_timestamp,end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM,SUBCLAIM,coverage_type_name,coverage_type_name,aw_qa.reporting.dim_sub_claim.coverage_type_name,aw_qa.reporting.dim_sub_claim.coverage_type_name,false,false,Null,STRING()
+SUBCLAIM,SUBCLAIM,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM,SUBCLAIM,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM,SUBCLAIM,record_insert_user_identifier,record_insert_user_identifier,edw_preprod.dbo.map_claim_edw_No_Match,edw_preprod.dbo.map_claim_edw_No_Match,false,false,Null,VARCHAR(20)
+SUBCLAIM,SUBCLAIM,record_update_user_identifier,record_update_user_identifier,edw_preprod.dbo.map_claim_edw_No_Match,edw_preprod.dbo.map_claim_edw_No_Match,false,false,Null,VARCHAR(20)
+SUBCLAIM,SUBCLAIM,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+SUBCLAIM,SUBCLAIM,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM,SUBCLAIM,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM,SUBCLAIM,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+SUBCLAIM,SUBCLAIM,record_hashkey,record_hashkey,edw_preprod.dbo.map_claim_edw_No_Match,edw_preprod.dbo.map_claim_edw_No_Match,false,false,Null,BIGINT
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,subclaim_key,subclaim_key,,,true,true,Not Null,BIGINT
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,region_name,region_name,,,false,false,Null,STRING(50)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,source_system_code,source_system_code,,,false,false,Null,STRING(255)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,coverage_type_code,coverage_type_code,"iVOS 
+eBAO AW_SRC.ebao.claim_t_clm_object.subclaim_type  edw_preprod.dbo.map_claim_edw_CLMSMADE_OCCURRENCE","iVOS 
+eBAO AW_SRC.ebao.claim_t_clm_object.subclaim_type  edw_preprod.dbo.map_claim_edw_CLMSMADE_OCCURRENCE",false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,first_movement_last_moved_code,first_movement_last_moved_code,only for Genius edw_preprod.dbo.map_claim_edw_FRST_MVMT_LST_MVD_CD,only for Genius edw_preprod.dbo.map_claim_edw_FRST_MVMT_LST_MVD_CD,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,second_movement_last_moved_code,second_movement_last_moved_code,only for Genius edw_preprod.dbo.map_claim_edw_SCND_MVMT_LST_MVD_CD,only for Genius edw_preprod.dbo.map_claim_edw_SCND_MVMT_LST_MVD_CD,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,third_movement_last_moved_code,third_movement_last_moved_code,only for Genius edw_preprod.dbo.map_claim_edw_THRD_MVMT_LST_MVD_CD,only for Genius edw_preprod.dbo.map_claim_edw_THRD_MVMT_LST_MVD_CD,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,loss_analysis_2_code,loss_analysis_2_code,edw_preprod.dbo.map_claim_edw_LOSS_ANAL2_CD,edw_preprod.dbo.map_claim_edw_LOSS_ANAL2_CD,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,loss_analysis_3_code,loss_analysis_3_code,edw_preprod.dbo.map_claim_edw_LOSS_ANAL3_CD,edw_preprod.dbo.map_claim_edw_LOSS_ANAL3_CD,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,loss_analysis_4_code,loss_analysis_4_code,edw_preprod.dbo.map_claim_edw_LOSS_ANAL4_CD,edw_preprod.dbo.map_claim_edw_LOSS_ANAL4_CD,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,underwriting_last_updated_code,underwriting_last_updated_code,edw_preprod.dbo.map_claim_edw_ULU_CD,edw_preprod.dbo.map_claim_edw_ULU_CD,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,underwriting_last_updated_first_name,underwriting_last_updated_first_name,edw_preprod.dbo.map_claim_edw_ULU_FIRST_NM,edw_preprod.dbo.map_claim_edw_ULU_FIRST_NM,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,underwriting_last_updated_last_name,underwriting_last_updated_last_name,edw_preprod.dbo.map_claim_edw_ULU_LAST_NM,edw_preprod.dbo.map_claim_edw_ULU_LAST_NM,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,examiner_claim_handler_code,examiner_claim_handler_code,edw_preprod.dbo.map_claim_edw_ECH_CD,edw_preprod.dbo.map_claim_edw_ECH_CD,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,examiner_claim_handler_first_name,examiner_claim_handler_first_name,edw_preprod.dbo.map_claim_edw_ECH_FIRST_NM,edw_preprod.dbo.map_claim_edw_ECH_FIRST_NM,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,examiner_claim_handler_last_name,examiner_claim_handler_last_name,edw_preprod.dbo.map_claim_edw_ECH_LAST_NM,edw_preprod.dbo.map_claim_edw_ECH_LAST_NM,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claim_cause_group_code,claim_cause_group_code,iVOS only edw_preprod.dbo.map_claim_edw_CLAIM_CAUSE_GROUP_CODE,iVOS only edw_preprod.dbo.map_claim_edw_CLAIM_CAUSE_GROUP_CODE,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claim_cause_group_name,claim_cause_group_name,edw_preprod.dbo.map_claim_edw_CLAIM_CAUSE_GROUP_DESC,edw_preprod.dbo.map_claim_edw_CLAIM_CAUSE_GROUP_DESC,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,accident_loss_type_group_code,accident_loss_type_group_code,iVOS only edw_preprod.dbo.map_claim_edw_ACCIDENT_LOSS_TYPE_GROUP_CODE,iVOS only edw_preprod.dbo.map_claim_edw_ACCIDENT_LOSS_TYPE_GROUP_CODE,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,accident_loss_type_group_name,accident_loss_type_group_name,iVOS only edw_preprod.dbo.map_claim_edw_ACCIDENT_LOSS_TYPE_GROUP_DESC,iVOS only edw_preprod.dbo.map_claim_edw_ACCIDENT_LOSS_TYPE_GROUP_DESC,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,add_user_identifier,add_user_identifier,iVOS only edw_preprod.dbo.map_claim_edw_ADDUSERID,iVOS only edw_preprod.dbo.map_claim_edw_ADDUSERID,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,add_user_name,add_user_name,iVOS only edw_preprod.dbo.map_claim_edw_ADDUSERNAME,iVOS only edw_preprod.dbo.map_claim_edw_ADDUSERNAME,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,nature_of_injury_name,nature_of_injury_name,edw_preprod.dbo.map_claim_edw_NATURE_OF_INJURY_DESC,edw_preprod.dbo.map_claim_edw_NATURE_OF_INJURY_DESC,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,nature_of_injury_group_code,nature_of_injury_group_code,edw_preprod.dbo.map_claim_edw_NATURE_OF_INJURY_GROUP,edw_preprod.dbo.map_claim_edw_NATURE_OF_INJURY_GROUP,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,nature_of_allegation_text,nature_of_allegation_text,edw_preprod.dbo.map_claim_edw_NATURE_OF_ALLEGATION,edw_preprod.dbo.map_claim_edw_NATURE_OF_ALLEGATION,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,nature_of_allegation_group_code,nature_of_allegation_group_code,edw_preprod.dbo.map_claim_edw_NATURE_OF_ALLEGATION_GROU,edw_preprod.dbo.map_claim_edw_NATURE_OF_ALLEGATION_GROU,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,nsm_examiner_email_identifier,nsm_examiner_email_identifier,iVOS only edw_preprod.dbo.map_claim_edw_NSMEXAMINEREMAILADDRESS,iVOS only edw_preprod.dbo.map_claim_edw_NSMEXAMINEREMAILADDRESS,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,nsm_examiner_phone_number,nsm_examiner_phone_number,iVOS only edw_preprod.dbo.map_claim_edw_NSMEXAMINERPHONENUMBER,iVOS only edw_preprod.dbo.map_claim_edw_NSMEXAMINERPHONENUMBER,false,false,Null,STRING(20)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,file_type_code,file_type_code,iVOS only edw_preprod.dbo.map_claim_edw_FILE_TYPE,iVOS only edw_preprod.dbo.map_claim_edw_FILE_TYPE,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claimant_minor_coverage_code,claimant_minor_coverage_code,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMANT_MINOR_COVERAGE,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMANT_MINOR_COVERAGE,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claimant_classification_code,claimant_classification_code,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMANT_CLASSIFICATION,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMANT_CLASSIFICATION,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claims_made_occurrence_code,claims_made_occurrence_code,iVOS only edw_preprod.dbo.map_claim_edw_CLMSMADE_OCCURRENCE,iVOS only edw_preprod.dbo.map_claim_edw_CLMSMADE_OCCURRENCE,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,specialty_code,specialty_code,iVOS only edw_preprod.dbo.map_claim_edw_SPECIALTY,iVOS only edw_preprod.dbo.map_claim_edw_SPECIALTY,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,drug_coverage_code,drug_coverage_code,iVOS only edw_preprod.dbo.map_claim_edw_DRG_COVERAGE,iVOS only edw_preprod.dbo.map_claim_edw_DRG_COVERAGE,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,accident_postal_code,accident_postal_code,iVOS only edw_preprod.dbo.map_claim_edw_ACCIDENT_ZIP,iVOS only edw_preprod.dbo.map_claim_edw_ACCIDENT_ZIP,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,accident_loss_type_code,accident_loss_type_code,iVOS only edw_preprod.dbo.map_claim_edw_ACCIDENT_LOSS_TYPE_CODE,iVOS only edw_preprod.dbo.map_claim_edw_ACCIDENT_LOSS_TYPE_CODE,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,location_unit_code,location_unit_code,iVOS only edw_preprod.dbo.map_claim_edw_LOCATION_UNIT,iVOS only edw_preprod.dbo.map_claim_edw_LOCATION_UNIT,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claimant_gender_code,claimant_gender_code,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMANT_GENDER,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMANT_GENDER,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,ivos_product_code,ivos_product_code,edw_preprod.dbo.map_claim_edw_IVOS_PRODUCT,edw_preprod.dbo.map_claim_edw_IVOS_PRODUCT,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,financial_product_group_code,financial_product_group_code,edw_preprod.dbo.map_claim_edw_FINPRODGRP,edw_preprod.dbo.map_claim_edw_FINPRODGRP,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,subrogation_handler_name,subrogation_handler_name,Only for Genius available now edw_preprod.dbo.map_claim_edw_SBRGTN_NAME,Only for Genius available now edw_preprod.dbo.map_claim_edw_SBRGTN_NAME,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,examiner_1_name,examiner_1_name,iVOS only edw_preprod.dbo.map_claim_edw_EXAMINER1,iVOS only edw_preprod.dbo.map_claim_edw_EXAMINER1,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,examiner_2_name,examiner_2_name,iVOS only edw_preprod.dbo.map_claim_edw_EXAMINER2,iVOS only edw_preprod.dbo.map_claim_edw_EXAMINER2,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,examiner_3_name,examiner_3_name,iVOS only edw_preprod.dbo.map_claim_edw_EXAMINER3,iVOS only edw_preprod.dbo.map_claim_edw_EXAMINER3,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claimant_first_name,claimant_first_name,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMANT_FIRST_NAME,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMANT_FIRST_NAME,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claimant_middle_name,claimant_middle_name,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMANT_MIDDLE_NAME,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMANT_MIDDLE_NAME,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claimant_last_name,claimant_last_name,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMANT_LAST_NAME,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMANT_LAST_NAME,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,insured_state_name,insured_state_name,edw_preprod.dbo.map_claim_edw_INSURED_STATE,edw_preprod.dbo.map_claim_edw_INSURED_STATE,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claimant_loss_description_text,claimant_loss_description_text,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMANTLOSSDESCRIPTION,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMANTLOSSDESCRIPTION,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claimant_affiliate_number,claimant_affiliate_number,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMANT_AFFILIATE_NUMBER,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMANT_AFFILIATE_NUMBER,false,false,Null,STRING(20)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,initial_demand_amount_usd,initial_demand_amount_usd,iVOS only edw_preprod.dbo.map_claim_edw_INITIAL_DEMAND,iVOS only edw_preprod.dbo.map_claim_edw_INITIAL_DEMAND,false,false,Null,"DECIMAL(38,4)"
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,per_claim_deductible_amount_usd,per_claim_deductible_amount_usd,iVOS only edw_preprod.dbo.map_claim_edw_PER_CLAIM_DEDUCTIBLE,iVOS only edw_preprod.dbo.map_claim_edw_PER_CLAIM_DEDUCTIBLE,false,false,Null,STRING(25)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,per_claim_limit_amount_usd,per_claim_limit_amount_usd,iVOS only edw_preprod.dbo.map_claim_edw_PER_CLAIM_LIMIT,iVOS only edw_preprod.dbo.map_claim_edw_PER_CLAIM_LIMIT,false,false,Null,STRING(25)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,represented_indicator,represented_indicator,iVOS only edw_preprod.dbo.map_claim_edw_REPRESENTED,iVOS only edw_preprod.dbo.map_claim_edw_REPRESENTED,false,false,Null,VARCHAR(10)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,severe_reportable_indicator,severe_reportable_indicator,edw_preprod.dbo.map_claim_edw_SEVERE_REPORTABLE,edw_preprod.dbo.map_claim_edw_SEVERE_REPORTABLE,false,false,Null,VARCHAR(10)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claim_detail_litigated_indicator,claim_detail_litigated_indicator,iVOS only edw_preprod.dbo.map_claim_edw_LITIGATED,iVOS only edw_preprod.dbo.map_claim_edw_LITIGATED,false,false,Null,VARCHAR(10)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,defense_counsel_indicator,defense_counsel_indicator,"EDW_PREPROD_dbo.Lookup_dragon_claim_contact.claimno
+ EDW_PREPROD_dbo.Lookup_dragon_claim_contact","EDW_PREPROD_dbo.Lookup_dragon_claim_contact.claimno
+ EDW_PREPROD_dbo.Lookup_dragon_claim_contact",false,false,Null,VARCHAR(10)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,birth_date,birth_date,iVOS only edw_preprod.dbo.map_claim_edw_BIRTH_DATE,iVOS only edw_preprod.dbo.map_claim_edw_BIRTH_DATE,false,false,Null,DATE
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claim_asserted_timestamp,claim_asserted_timestamp,iVOS only,iVOS only,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claimant_reopened_timestamp,claimant_reopened_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claim_detail_latest_note_add_date,claim_detail_latest_note_add_date,"aw_dev.ivos.notepad.ADD_DATE	
+ aw_dev.ivos.notepad_ADD_DATE","aw_dev.ivos.notepad.ADD_DATE	
+ aw_dev.ivos.notepad_ADD_DATE",false,false,Null,DATE
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claim_detail_latest_note_edit_date,claim_detail_latest_note_edit_date,aw_dev.ivos.notepad.EDIT_DATE aw_dev.ivos.notepad_EDIT_DATE,aw_dev.ivos.notepad.EDIT_DATE aw_dev.ivos.notepad_EDIT_DATE,false,false,Null,DATE
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claim_detail_latest_mail_sent_date,claim_detail_latest_mail_sent_date,"aw_dev.ivos.claim_mail.sent_date
+
+ aw_dev.ivos.claim_mail_sent_date","aw_dev.ivos.claim_mail.sent_date
+
+ aw_dev.ivos.claim_mail_sent_date",false,false,Null,DATE
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claim_detail_latest_mail_received_date,claim_detail_latest_mail_received_date,aw_dev.ivos.claim_mail.Received_date aw_dev.ivos.claim_mail_Received_date,aw_dev.ivos.claim_mail.Received_date aw_dev.ivos.claim_mail_Received_date,false,false,Null,DATE
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claim_detail_latest_trial_date,claim_detail_latest_trial_date,"aw_dev.ivos.LITIGATION_CALENDAR - WHEN LIT_CAL_TYPE.LITIGATION_CALENDAR_TYPE_DESC = 'Trial Date' THEN LIT_CAL.CALENDAR_DATE
+ aw_dev.ivos.LITIGATION_CALENDAR_WHEN LIT_CAL_TYPE.LITIGATION_CALENDAR_TYPE_DESC = 'Trial Date' THEN LIT_CAL.CALENDAR_DATE","aw_dev.ivos.LITIGATION_CALENDAR - WHEN LIT_CAL_TYPE.LITIGATION_CALENDAR_TYPE_DESC = 'Trial Date' THEN LIT_CAL.CALENDAR_DATE
+ aw_dev.ivos.LITIGATION_CALENDAR_WHEN LIT_CAL_TYPE.LITIGATION_CALENDAR_TYPE_DESC = 'Trial Date' THEN LIT_CAL.CALENDAR_DATE",false,false,Null,DATE
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claim_detail_latest_mediation_arbitration_date,claim_detail_latest_mediation_arbitration_date,"aw_dev.ivos.LITIGATION_CALENDAR - WHEN LIT_CAL_TYPE.LITIGATION_CALENDAR_TYPE_DESC = 'Mediation/Arbitration' THEN LIT_CAL.CALENDAR_DATE
+ aw_dev.ivos.LITIGATION_CALENDAR_WHEN LIT_CAL_TYPE.LITIGATION_CALENDAR_TYPE_DESC = 'Mediation/Arbitration' THEN LIT_CAL.CALENDAR_DATE","aw_dev.ivos.LITIGATION_CALENDAR - WHEN LIT_CAL_TYPE.LITIGATION_CALENDAR_TYPE_DESC = 'Mediation/Arbitration' THEN LIT_CAL.CALENDAR_DATE
+ aw_dev.ivos.LITIGATION_CALENDAR_WHEN LIT_CAL_TYPE.LITIGATION_CALENDAR_TYPE_DESC = 'Mediation/Arbitration' THEN LIT_CAL.CALENDAR_DATE",false,false,Null,DATE
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,social_security_number,social_security_number,iVOS only edw_preprod.dbo.map_claim_edw_LITIGATION_TYPE_DESC,iVOS only edw_preprod.dbo.map_claim_edw_LITIGATION_TYPE_DESC,false,false,Null,STRING(9)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,claim_source_code,claim_source_code,edw_preprod.dbo.map_claim_edw_CLAIM_SOURCE,edw_preprod.dbo.map_claim_edw_CLAIM_SOURCE,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,days_review_overdue_number,days_review_overdue_number,NO_MATCH,NO_MATCH,false,false,Null,INT
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,darwin_examiner_name,darwin_examiner_name,edw_preprod.dbo.map_claim_edw_ECH_NAME,edw_preprod.dbo.map_claim_edw_ECH_NAME,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,involved_doctor_name,involved_doctor_name,NO_MATCH,NO_MATCH,false,false,Null,STRING()
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,record_update_user_identifier,record_update_user_identifier,,,false,false,Null,VARCHAR(20)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+SUBCLAIM_SUPPL,SUBCLAIM_SUPPL,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+PAYEE,PAYEE,payee_key,payee_key,,,false,true,Not Null,BIGINT
+PAYEE,PAYEE,region_name,region_name,,,false,false,Null,STRING(50)
+PAYEE,PAYEE,source_system_code,source_system_code,,,false,false,Null,STRING(255)
+PAYEE,PAYEE,payee_code,payee_code,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_NAIC,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_NAIC,false,false,Null,STRING()
+PAYEE,PAYEE,payee_legal_name,payee_legal_name,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_LEGEL_NM,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_LEGEL_NM,false,false,Null,STRING()
+PAYEE,PAYEE,payee_address_name,payee_address_name,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_ADDR_NM,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_ADDR_NM,false,false,Null,STRING()
+PAYEE,PAYEE,payee_address_text,payee_address_text,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_ADDR,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_ADDR,false,false,Null,STRING()
+PAYEE,PAYEE,payee_address_line_1_text,payee_address_line_1_text,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_ADDR_LN_1,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_ADDR_LN_1,false,false,Null,STRING()
+PAYEE,PAYEE,payee_address_line_2_text,payee_address_line_2_text,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_ADDR_LN_2,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_ADDR_LN_2,false,false,Null,STRING()
+PAYEE,PAYEE,payee_address_line_3_text,payee_address_line_3_text,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_ADDR_LN_3,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_ADDR_LN_3,false,false,Null,STRING()
+PAYEE,PAYEE,payee_address_line_4_text,payee_address_line_4_text,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_ADDR_LN_4,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_ADDR_LN_4,false,false,Null,STRING()
+PAYEE,PAYEE,payee_address_line_5_text,payee_address_line_5_text,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_ADDR_LN_5,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_ADDR_LN_5,false,false,Null,STRING()
+PAYEE,PAYEE,payee_region_name,payee_region_name,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_REG,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_REG,false,false,Null,STRING()
+PAYEE,PAYEE,payee_country_name,payee_country_name,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_CTRY,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_CTRY,false,false,Null,STRING()
+PAYEE,PAYEE,payee_state_name,payee_state_name,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_ST,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_ST,false,false,Null,STRING()
+PAYEE,PAYEE,payee_postal_code,payee_postal_code,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_POST_CD,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_POST_CD,false,false,Null,STRING()
+PAYEE,PAYEE,payee_naic_code,payee_naic_code,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_NAIC,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_NAIC,false,false,Null,STRING()
+PAYEE,PAYEE,payee_duns_code,payee_duns_code,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_D_AND_B,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_D_AND_B,false,false,Null,STRING()
+PAYEE,PAYEE,payee_phone_number,payee_phone_number,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_PHONE_NBR,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_PHONE_NBR,false,false,Null,STRING()
+PAYEE,PAYEE,payee_fax_number,payee_fax_number,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_FAX_NBR,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_FAX_NBR,false,false,Null,STRING()
+PAYEE,PAYEE,payee_sic_code,payee_sic_code,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_SIC_CD,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_SIC_CD,false,false,Null,STRING()
+PAYEE,PAYEE,payee_ticker_code,payee_ticker_code,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_TICKER,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_TICKER,false,false,Null,STRING()
+PAYEE,PAYEE,payee_am_best_rating_code,payee_am_best_rating_code,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_AM_BEST_RATING,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_AM_BEST_RATING,false,false,Null,STRING()
+PAYEE,PAYEE,payee_fortune_500_indicator,payee_fortune_500_indicator,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_FORT_500,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_FORT_500,false,false,Null,VARCHAR(10)
+PAYEE,PAYEE,payee_market_cap_amount_usd,payee_market_cap_amount_usd,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_MKT_CAP,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_MKT_CAP,false,false,Null,STRING(255)
+PAYEE,PAYEE,payee_annual_revenue_amount_usd,payee_annual_revenue_amount_usd,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_ANN_REV,EDW_PREPROD.dbo.ATT_PAYEE_EDW.PAYEE_ANN_REV,false,false,Null,STRING(255)
+PAYEE,PAYEE,payee_tax_identifier,payee_tax_identifier,,,false,false,Null,STRING(80)
+PAYEE,PAYEE,payee_vendor_type_code,payee_vendor_type_code,,,false,false,Null,STRING()
+PAYEE,PAYEE,payee_panel_indicator,payee_panel_indicator,,,false,false,Null,VARCHAR(10)
+PAYEE,PAYEE,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+PAYEE,PAYEE,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+PAYEE,PAYEE,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+PAYEE,PAYEE,record_update_user_identifier,record_update_user_identifier,,,false,false,Null,VARCHAR(20)
+PAYEE,PAYEE,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+PAYEE,PAYEE,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+PAYEE,PAYEE,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+PAYEE,PAYEE,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+PAYEE,PAYEE,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+CLAIM_HANDLER,CLAIM_HANDLER,claim_handler_key,claim_handler_key,,,false,true,Not Null,BIGINT
+CLAIM_HANDLER,CLAIM_HANDLER,source_system_code,source_system_code,,,false,false,Null,STRING(50)
+CLAIM_HANDLER,CLAIM_HANDLER,claim_handler_name,claim_handler_name,mds.mdm.claim_handler.Name,mds.mdm.claim_handler.Name,false,false,Null,STRING()
+CLAIM_HANDLER,CLAIM_HANDLER,claim_team_key,claim_team_key,,,true,false,Not Null,BIGINT
+CLAIM_HANDLER,CLAIM_HANDLER,claim_handler_region_name,claim_handler_region_name,mds.mdm.claim_handler.Region_Name,mds.mdm.claim_handler.Region_Name,false,false,Null,STRING()
+CLAIM_HANDLER,CLAIM_HANDLER,claim_handler_email,claim_handler_email,mds.mdm.claim_handler.Email,mds.mdm.claim_handler.Email,false,false,Null,STRING()
+CLAIM_HANDLER,CLAIM_HANDLER,claim_area_handled_name,claim_area_handled_name,mds.mdm.claim_handler.Claim Area Handled_Name,mds.mdm.claim_handler.Claim Area Handled_Name,false,false,Null,STRING()
+CLAIM_HANDLER,CLAIM_HANDLER,third_party_administrator_name,third_party_administrator_name,mds.mdm.claim_handler.Third Party Administrator_Name,mds.mdm.claim_handler.Third Party Administrator_Name,false,false,Null,STRING()
+CLAIM_HANDLER,CLAIM_HANDLER,is_human_code,is_human_code,mds.mdm.claim_handler.Supervisor_Code,mds.mdm.claim_handler.Supervisor_Code,false,false,Null,STRING()
+CLAIM_HANDLER,CLAIM_HANDLER,claim_handler_code,claim_handler_code,mds.mdm.claim_handler.Code,mds.mdm.claim_handler.Code,false,false,Null,STRING(255)
+CLAIM_HANDLER,CLAIM_HANDLER,region_name,region_name,,,false,false,Null,STRING(50)
+CLAIM_HANDLER,CLAIM_HANDLER,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_HANDLER,CLAIM_HANDLER,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_HANDLER,CLAIM_HANDLER,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+CLAIM_HANDLER,CLAIM_HANDLER,record_update_user_identifier,record_update_user_identifier,,,false,false,Null,VARCHAR(20)
+CLAIM_HANDLER,CLAIM_HANDLER,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+CLAIM_HANDLER,CLAIM_HANDLER,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_HANDLER,CLAIM_HANDLER,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_HANDLER,CLAIM_HANDLER,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+CLAIM_HANDLER,CLAIM_HANDLER,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+CLAIM_TEAM,CLAIM_TEAM,claim_team_key,claim_team_key,,,false,true,Not Null,BIGINT
+CLAIM_TEAM,CLAIM_TEAM,region_name,region_name,,,false,false,Null,STRING(50)
+CLAIM_TEAM,CLAIM_TEAM,claim_team_name,claim_team_name,mds.mdm.claim_team.Name or aw_qa.reporting.claim_team;,mds.mdm.claim_team.Name,false,false,Null,STRING()
+CLAIM_TEAM,CLAIM_TEAM,claim_team_manager_name,claim_team_manager_name,mds.mdm.claim_team.Claim Team Manager_Name or aw_qa.reporting.claim_team;,mds.mdm.claim_team.Claim Team Manager_Name,false,false,Null,STRING()
+CLAIM_TEAM,CLAIM_TEAM,source_system_code,source_system_code,,,false,false,Null,STRING(255)
+CLAIM_TEAM,CLAIM_TEAM,claim_team_manager_identifier,claim_team_manager_identifier,mds.mdm.claim_team.Claim Team Manager_ID,mds.mdm.claim_team.Claim Team Manager_ID,false,false,Null,INT
+CLAIM_TEAM,CLAIM_TEAM,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_TEAM,CLAIM_TEAM,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_TEAM,CLAIM_TEAM,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+CLAIM_TEAM,CLAIM_TEAM,record_update_user_identifier,record_update_user_identifier,,,false,false,Null,VARCHAR(20)
+CLAIM_TEAM,CLAIM_TEAM,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+CLAIM_TEAM,CLAIM_TEAM,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_TEAM,CLAIM_TEAM,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_TEAM,CLAIM_TEAM,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+CLAIM_TEAM,CLAIM_TEAM,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+CATASTROPHE_EVENT,CATASTROPHE_EVENT,catastrophe_event_key,catastrophe_event_key,,,false,true,Not Null,BIGINT
+CATASTROPHE_EVENT,CATASTROPHE_EVENT,region_name,region_name,,,false,false,Null,STRING(50)
+CATASTROPHE_EVENT,CATASTROPHE_EVENT,source_system_code,source_system_code,,,false,false,Null,STRING(255)
+CATASTROPHE_EVENT,CATASTROPHE_EVENT,catastrophe_event_code,catastrophe_event_code," EDW_PREPROD.dbo.map_claim_edw.LVL1_CAT_CD,2,3"," EDW_PREPROD.dbo.map_claim_edw.LVL1_CAT_CD,2,3",false,false,Null,STRING(255)
+CATASTROPHE_EVENT,CATASTROPHE_EVENT,catastrophe_event_name,catastrophe_event_name," EDW_PREPROD.dbo.map_claim_edw.LVL1_CAT_NAME,2,3"," EDW_PREPROD.dbo.map_claim_edw.LVL1_CAT_NAME,2,3",false,false,Null,STRING()
+CATASTROPHE_EVENT,CATASTROPHE_EVENT,claim_catastrophe_event_severity,claim_catastrophe_event_severity," EDW_PREPROD.dbo.map_claim_edw.LVL1_CAT_QUAL,2,3"," EDW_PREPROD.dbo.map_claim_edw.LVL1_CAT_QUAL,2,3",false,false,Null,STRING()
+CATASTROPHE_EVENT,CATASTROPHE_EVENT,catastrophe_event_qualifier_code,catastrophe_event_qualifier_code,,,false,false,Null,STRING()
+CATASTROPHE_EVENT,CATASTROPHE_EVENT,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CATASTROPHE_EVENT,CATASTROPHE_EVENT,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CATASTROPHE_EVENT,CATASTROPHE_EVENT,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+CATASTROPHE_EVENT,CATASTROPHE_EVENT,record_update_user_identifier,record_update_user_identifier,,,false,false,Null,VARCHAR(20)
+CATASTROPHE_EVENT,CATASTROPHE_EVENT,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+CATASTROPHE_EVENT,CATASTROPHE_EVENT,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CATASTROPHE_EVENT,CATASTROPHE_EVENT,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CATASTROPHE_EVENT,CATASTROPHE_EVENT,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+CATASTROPHE_EVENT,CATASTROPHE_EVENT,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+CLAIMANT,CLAIMANT,claimant_key,claimant_key,,,false,true,Not Null,BIGINT
+CLAIMANT,CLAIMANT,region_name,region_name,,,false,false,Null,STRING(50)
+CLAIMANT,CLAIMANT,source_system_code,source_system_code,,,false,false,Null,STRING(255)
+CLAIMANT,CLAIMANT,claimant_code,claimant_code,,,false,false,Null,STRING(255)
+CLAIMANT,CLAIMANT,claimant_type_code,claimant_type_code,,,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_name,claimant_name,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.BE_NAME,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.BE_NAME,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_legal_name,claimant_legal_name,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_LGL_NAME,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_LGL_NAME,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_address_text,claimant_address_text,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_ADDR,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_ADDR,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_address_name,claimant_address_name,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_ADDR_NM,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_ADDR_NM,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_address_line_1_text,claimant_address_line_1_text,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_ADDR_LINE1,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_ADDR_LINE1,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_address_line_2_text,claimant_address_line_2_text,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_ADDR_LINE2,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_ADDR_LINE2,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_address_line_3_text,claimant_address_line_3_text,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_ADDR_LINE3,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_ADDR_LINE3,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_address_line_4_text,claimant_address_line_4_text,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_ADDR_LINE4,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_ADDR_LINE4,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_address_line_5_text,claimant_address_line_5_text,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_ADDR_LINE5,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_ADDR_LINE5,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_domestic_state_code,claimant_domestic_state_code,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_DOM_ST_CD,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_DOM_ST_CD,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_domestic_state_name,claimant_domestic_state_name,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_DOM_ST_NM,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_DOM_ST_NM,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_domestic_country_code,claimant_domestic_country_code,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_DOM_CTRY_CD,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_DOM_CTRY_CD,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_postal_code,claimant_postal_code,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_POST_CD,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_POST_CD,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_phone_number,claimant_phone_number,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_PHONE_NBR,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_PHONE_NBR,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_fax_number,claimant_fax_number,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_FAX_NBR,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_FAX_NBR,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_domestic_region_name,claimant_domestic_region_name,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_DOM_REG_NM,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_DOM_REG_NM,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_domestic_region_code,claimant_domestic_region_code,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_DOM_RGN_CD,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_DOM_RGN_CD,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_domestic_country_name,claimant_domestic_country_name,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_DOM_CTRY_NM,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_DOM_CTRY_NM,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_duns_code,claimant_duns_code,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_D_AND_B,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_D_AND_B,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_naic_code,claimant_naic_code,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_NAIC,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_NAIC,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_sic_code,claimant_sic_code,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_SIC_CD,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_SIC_CD,false,false,Null,STRING()
+CLAIMANT,CLAIMANT,claimant_fortune_500_indicator,claimant_fortune_500_indicator,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_FORTUNE_500,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_FORTUNE_500,false,false,Null,VARCHAR(10)
+CLAIMANT,CLAIMANT,claimant_market_capitalization_amount_usd,claimant_market_capitalization_amount_usd,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_MKT_CAP,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_MKT_CAP,false,false,Null,STRING(255)
+CLAIMANT,CLAIMANT,claimant_annual_revenue_amount_usd,claimant_annual_revenue_amount_usd,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_ANN_REV,EDW_PREPROD.dbo.ATT_CLAIMANT_EDW.CLMT_ANN_REV,false,false,Null,STRING(255)
+CLAIMANT,CLAIMANT,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIMANT,CLAIMANT,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIMANT,CLAIMANT,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+CLAIMANT,CLAIMANT,record_update_user_identifier,record_update_user_identifier,,,false,false,Null,VARCHAR(20)
+CLAIMANT,CLAIMANT,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+CLAIMANT,CLAIMANT,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIMANT,CLAIMANT,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIMANT,CLAIMANT,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+CLAIMANT,CLAIMANT,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+Policy,POLICY,policy_key,policy_key,,,false,true,Not Null,BIGINT
+Policy,POLICY,region_name,region_name,,,false,false,Null,STRING(50)
+Policy,POLICY,source_system_code,source_system_code,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.policy_source,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.policy_source,false,false,Null,STRING(255)
+Policy,POLICY,policy_number,policy_number,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.PLCY_NBR,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.PLCY_NBR,false,false,Null,STRING(80)
+Policy,POLICY,policy_status_name,policy_status_name,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.PLCY_STAT_NAME,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.PLCY_STAT_NAME,false,false,Null,STRING()
+Policy,POLICY,policy_code,policy_code,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.PLCY_CD,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.PLCY_CD,false,false,Null,STRING()
+Policy,POLICY,policy_section_code,policy_section_code,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.PLCY_SECT_CD,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.PLCY_SECT_CD,false,false,Null,STRING()
+Policy,POLICY,policy_section_details_code,policy_section_details_code,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.PLCY_SECT_DET,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.PLCY_SECT_DET,false,false,Null,STRING()
+Policy,POLICY,policy_source_code,policy_source_code,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.policy_source,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.policy_source,false,false,Null,STRING()
+Policy,POLICY,policy_product_department_code,policy_product_department_code,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.PLCY_PROD_DEPT_CD,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.PLCY_PROD_DEPT_CD,false,false,Null,STRING()
+Policy,POLICY,policy_product_department_name,policy_product_department_name,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.PLCY_PROD_DEPT_NAME,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.PLCY_PROD_DEPT_NAME,false,false,Null,STRING()
+Policy,POLICY,policy_line_of_business_code,policy_line_of_business_code,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.PLCY_LOB_CD,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.PLCY_LOB_CD,false,false,Null,STRING()
+Policy,POLICY,policy_line_of_business_name,policy_line_of_business_name,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.PLCY_LOB_NAME,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.PLCY_LOB_NAME,false,false,Null,STRING()
+Policy,POLICY,renewal_business_name,renewal_business_name,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.RENEW_BUS_NAME,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.RENEW_BUS_NAME,false,false,Null,STRING()
+Policy,POLICY,assumed_direct_name,assumed_direct_name,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.ASSMD_DIRECT_NAME,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.ASSMD_DIRECT_NAME,false,false,Null,STRING()
+Policy,POLICY,broker_code,broker_code,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.BRKR_CD,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.BRKR_CD,false,false,Null,STRING()
+Policy,POLICY,broker_legal_name,broker_legal_name,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.BRKR_LEGAL_NM,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.BRKR_LEGAL_NM,false,false,Null,STRING()
+Policy,POLICY,broker_contact_name,broker_contact_name,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.BRKR_CONT_NAME,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.BRKR_CONT_NAME,false,false,Null,STRING()
+Policy,POLICY,assured_code,assured_code,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.ASSRD_CD,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.ASSRD_CD,false,false,Null,STRING()
+Policy,POLICY,assured_legal_name,assured_legal_name,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.ASSRD_LEGAL_NM,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.ASSRD_LEGAL_NM,false,false,Null,STRING()
+Policy,POLICY,assured_duns_code,assured_duns_code,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.ASSRD_D_AND_B,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.ASSRD_D_AND_B,false,false,Null,STRING()
+Policy,POLICY,assured_naic_code,assured_naic_code,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.ASSRD_NAIC,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.ASSRD_NAIC,false,false,Null,STRING()
+Policy,POLICY,insured_legal_name,insured_legal_name,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.INSRD_LEGAL_NM,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.INSRD_LEGAL_NM,false,false,Null,STRING()
+Policy,POLICY,reassured_legal_name,reassured_legal_name,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.REASSRD_LEGAL_NM,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.REASSRD_LEGAL_NM,false,false,Null,STRING()
+Policy,POLICY,branch_name,branch_name,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.BRANCH_NAME,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.BRANCH_NAME,false,false,Null,STRING()
+Policy,POLICY,branch_group_name,branch_group_name,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.BRCH_GRP_NAME,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.BRCH_GRP_NAME,false,false,Null,STRING()
+Policy,POLICY,underwriter_name,underwriter_name,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.UW_NAME,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.UW_NAME,false,false,Null,STRING()
+Policy,POLICY,underwriter_1_name,underwriter_1_name,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.UW_NAME,EDW_PREPROD.dbo.MAP_POLICY_DIRECT.UW_NAME,false,false,Null,STRING()
+Policy,POLICY,start_timestamp,start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Policy,POLICY,end_timestamp,end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Policy,POLICY,inception_timestamp,inception_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Policy,POLICY,expiry_timestamp,expiry_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Policy,POLICY,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Policy,POLICY,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Policy,POLICY,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+Policy,POLICY,record_update_user_identifier,record_update_user_identifier,,,false,false,Null,VARCHAR(20)
+Policy,POLICY,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+Policy,POLICY,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Policy,POLICY,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Policy,POLICY,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+Policy,POLICY,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+Assured,ASSURED,assured_key,assured_key,,,false,true,Not Null,BIGINT
+Assured,ASSURED,region_name,region_name,,,false,false,Null,STRING(50)
+Assured,ASSURED,source_system_code,source_system_code,,,false,false,Null,STRING(255)
+Assured,ASSURED,assured_code,assured_code,,,false,false,Null,STRING(255)
+Assured,ASSURED,assured_name,assured_name,edw_preprod.dbo.ATT_ASSRD_EDW_BE_NAME,edw_preprod.dbo.ATT_ASSRD_EDW_BE_NAME,false,false,Null,STRING()
+Assured,ASSURED,assured_legal_name,assured_legal_name,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_LEGAL_NM,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_LEGAL_NM,false,false,Null,STRING()
+Assured,ASSURED,assured_address_name,assured_address_name,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ADDR_NM,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ADDR_NM,false,false,Null,STRING()
+Assured,ASSURED,assured_address_text,assured_address_text,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ADDR,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ADDR,false,false,Null,STRING()
+Assured,ASSURED,assured_address_line_1_text,assured_address_line_1_text,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ADDR_1,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ADDR_1,false,false,Null,STRING()
+Assured,ASSURED,assured_address_line_2_text,assured_address_line_2_text,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ADDR_2,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ADDR_2,false,false,Null,STRING()
+Assured,ASSURED,assured_address_line_3_text,assured_address_line_3_text,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ADDR_3,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ADDR_3,false,false,Null,STRING()
+Assured,ASSURED,assured_address_line_4_text,assured_address_line_4_text,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ADDR_4,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ADDR_4,false,false,Null,STRING()
+Assured,ASSURED,assured_address_line_5_text,assured_address_line_5_text,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ADDR_5,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ADDR_5,false,false,Null,STRING()
+Assured,ASSURED,assured_phone_number,assured_phone_number,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_PHONE_NBR,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_PHONE_NBR,false,false,Null,STRING()
+Assured,ASSURED,assured_fax_number,assured_fax_number,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_FAX_NBR,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_FAX_NBR,false,false,Null,STRING()
+Assured,ASSURED,assured_postal_code,assured_postal_code,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_POSTAL_CD,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_POSTAL_CD,false,false,Null,STRING()
+Assured,ASSURED,assured_domicile_state_name,assured_domicile_state_name,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ST,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ST,false,false,Null,STRING()
+Assured,ASSURED,assured_domicile_state_code,assured_domicile_state_code,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ST,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ST,false,false,Null,STRING()
+Assured,ASSURED,assured_domicile_region_name,assured_domicile_region_name,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_REG,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_REG,false,false,Null,STRING()
+Assured,ASSURED,assured_domicile_region_code,assured_domicile_region_code,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_REG,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_REG,false,false,Null,STRING()
+Assured,ASSURED,assured_domicile_country_name,assured_domicile_country_name,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_CTRY,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_CTRY,false,false,Null,STRING()
+Assured,ASSURED,assured_domicile_country_code,assured_domicile_country_code,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_CTRY,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_CTRY,false,false,Null,STRING()
+Assured,ASSURED,assured_naic_code,assured_naic_code,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_NAIC,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_NAIC,false,false,Null,STRING()
+Assured,ASSURED,assured_duns_code,assured_duns_code,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_D_AND_B,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_D_AND_B,false,false,Null,STRING()
+Assured,ASSURED,assured_sic_code,assured_sic_code,NO MATCH,NO MATCH,false,false,Null,STRING()
+Assured,ASSURED,assured_fortune_500_indicator,assured_fortune_500_indicator,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_FORTUNE_500,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_FORTUNE_500,false,false,Null,VARCHAR(10)
+Assured,ASSURED,assured_market_cap_amount_usd,assured_market_cap_amount_usd,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_MKT_CAP,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_MKT_CAP,false,false,Null,STRING(255)
+Assured,ASSURED,assured_annual_revenue_amount_usd,assured_annual_revenue_amount_usd,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ANN_REV,edw_preprod.dbo.ATT_ASSRD_EDW_ASSRD_ANN_REV,false,false,Null,STRING(255)
+Assured,ASSURED,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Assured,ASSURED,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Assured,ASSURED,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+Assured,ASSURED,record_update_user_identifier,record_update_user_identifier,,,false,false,Null,VARCHAR(20)
+Assured,ASSURED,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+Assured,ASSURED,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Assured,ASSURED,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Assured,ASSURED,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+Assured,ASSURED,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,field_investigation_key,field_investigation_key,,,true,true,Not Null,BIGINT
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,region_name,region_name,,,false,false,Null,STRING(50)
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,source_system_code,source_system_code,,,false,false,Null,STRING(255)
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,vin,vin,AW_SRC.ebao.claim_t_clm_fi_vehicle.vin,AW_SRC.ebao.claim_t_clm_fi_vehicle.vin,false,false,Null,STRING()
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,plate_number,plate_number,AW_SRC.ebao.claim_t_clm_fi_vehicle.plate_no,AW_SRC.ebao.claim_t_clm_fi_vehicle.plate_no,false,false,Null,STRING()
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,maker_name,maker_name,AW_SRC.ebao.claim_t_clm_fi_vehicle.maker,AW_SRC.ebao.claim_t_clm_fi_vehicle.maker,false,false,Null,STRING()
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,model_name,model_name,AW_SRC.ebao.claim_t_clm_fi_vehicle.model,AW_SRC.ebao.claim_t_clm_fi_vehicle.model,false,false,Null,STRING()
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,model_year,model_year,AW_SRC.ebao.claim_t_clm_fi_vehicle.model_year,AW_SRC.ebao.claim_t_clm_fi_vehicle.model_year,false,false,Null,STRING()
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,make_year,make_year,AW_SRC.ebao.claim_t_clm_fi_vehicle.make_year,AW_SRC.ebao.claim_t_clm_fi_vehicle.make_year,false,false,Null,STRING()
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,vehicle_type_name,vehicle_type_name,AW_SRC.ebao.claim_t_clm_fi_vehicle.vehicle_type,AW_SRC.ebao.claim_t_clm_fi_vehicle.vehicle_type,false,false,Null,STRING()
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,vehicle_color_name,vehicle_color_name,AW_SRC.ebao.claim_t_clm_fi_vehicle.vehicle_color,AW_SRC.ebao.claim_t_clm_fi_vehicle.vehicle_color,false,false,Null,STRING()
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,engine_number,engine_number,AW_SRC.ebao.claim_t_clm_fi_vehicle.engine_no,AW_SRC.ebao.claim_t_clm_fi_vehicle.engine_no,false,false,Null,STRING()
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,is_dot_indicator,is_dot_indicator,AW_SRC.ebao.claim_t_clm_fi_vehicle.is_dot,AW_SRC.ebao.claim_t_clm_fi_vehicle.is_dot,false,false,Null,VARCHAR(10)
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,field_investigator_arrived_timestamp,field_investigator_arrived_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,record_update_user_identifier,record_update_user_identifier,,,false,false,Null,VARCHAR(20)
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+CLAIM_FIELD_INVESTIGATION_VEHICLE,CLAIM_FIELD_INVESTIGATION_VEHICLE,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,field_investigation_key,field_investigation_key,,,false,true,Not Null,BIGINT
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,region_name,region_name,,,false,false,Null,STRING(50)
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,source_system_code,source_system_code,,,false,false,Null,STRING(255)
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,field_investigation_identifier,field_investigation_identifier,AW_SRC.ebao.claim_t_clm_fi.fi_id,AW_SRC.ebao.claim_t_clm_fi.fi_id,false,false,Null,"DECIMAL(19,0)"
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,field_investigation_object_identifier,field_investigation_object_identifier,AW_SRC.ebao.claim_t_clm_fi.object_id,AW_SRC.ebao.claim_t_clm_fi.object_id,false,false,Null,"DECIMAL(19,0)"
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,subclaim_key,subclaim_key,,,true,false,Not Null,BIGINT
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,damage_type_text,damage_type_text,AW_SRC.ebao.claim_t_clm_fi.damage_type,AW_SRC.ebao.claim_t_clm_fi.damage_type,false,false,Null,STRING()
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,field_investigation_status_text,field_investigation_status_text,AW_SRC.ebao.claim_t_clm_fi.fi_status,AW_SRC.ebao.claim_t_clm_fi.fi_status,false,false,Null,STRING()
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,field_investigation_remark_text,field_investigation_remark_text,AW_SRC.ebao.claim_t_clm_fi.fi_remark,AW_SRC.ebao.claim_t_clm_fi.fi_remark,false,false,Null,STRING()
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,business_object_id,business_object_id,AW_SRC.ebao.claim_t_clm_fi.business_object_id,AW_SRC.ebao.claim_t_clm_fi.business_object_id,false,false,Null,"DECIMAL(10,0)"
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,dynamic_fields_text,dynamic_fields_text,AW_SRC.ebao.claim_t_clm_fi.dynamic_fields,AW_SRC.ebao.claim_t_clm_fi.dynamic_fields,false,false,Null,STRING()
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,field_investigation_investigator_name,field_investigation_investigator_name,AW_SRC.ebao.claim_t_clm_fi.fi_investigator_name,AW_SRC.ebao.claim_t_clm_fi.fi_investigator_name,false,false,Null,STRING()
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,field_investigation_investigator_telephone_number,field_investigation_investigator_telephone_number,AW_SRC.ebao.claim_t_clm_fi.fi_investigator_tel,AW_SRC.ebao.claim_t_clm_fi.fi_investigator_tel,false,false,Null,STRING()
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,remark1_text,remark1_text,AW_SRC.ebao.claim_t_clm_fi.remark1,AW_SRC.ebao.claim_t_clm_fi.remark1,false,false,Null,STRING()
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,remark2_text,remark2_text,AW_SRC.ebao.claim_t_clm_fi.remark2,AW_SRC.ebao.claim_t_clm_fi.remark2,false,false,Null,STRING()
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,field_investigation_party_id,field_investigation_party_id,AW_SRC.ebao.claim_t_clm_fi.fi_party_id,AW_SRC.ebao.claim_t_clm_fi.fi_party_id,false,false,Null,"DECIMAL(19,0)"
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,record_update_user_identifier,record_update_user_identifier,,,false,false,Null,VARCHAR(20)
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+Claim_Field_Investigation,CLAIM_FIELD_INVESTIGATION,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,subclaim_coverage_key,subclaim_coverage_key,,,false,true,Not Null,BIGINT
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,coverage_reference_key,coverage_reference_key,Surrogate key to uniquely identify each coverage,Surrogate key to uniquely identify each coverage,true,false,Not Null,BIGINT
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,region_name,region_name,,,false,false,Null,STRING(50)
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,source_system_code,source_system_code,,,false,false,Null,STRING(255)
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,subclaim_key,subclaim_key,,,true,false,Not Null,BIGINT
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,policy_coverage_key,policy_coverage_key,edw_preprod.dbo.map_claim_edw_No_Match,edw_preprod.dbo.map_claim_edw_No_Match,false,false,Null,BIGINT
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,coverage_code,coverage_code,AW_SRC.ebao.claim_t_clm_item.coverage_code,AW_SRC.ebao.claim_t_clm_item.coverage_code,false,false,Null,STRING()
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,subclaim_coverage_number,subclaim_coverage_number,AW_SRC.ebao.claim_t_clm_item.item_id,AW_SRC.ebao.claim_t_clm_item.coverage_name,false,false,Null,STRING()
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,coverage_name,coverage_name,AW_SRC.ebao.claim_t_clm_item.coverage_name,AW_SRC.ebao.claim_t_clm_item.coverage_name,false,false,Null,STRING()
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,coverage_type_code,coverage_type_code,AW_SRC.ebao.claim_t_clm_coverage.coverage_type_code,AW_SRC.ebao.claim_t_clm_coverage.coverage_type_code,false,false,Null,STRING()
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,coverage_description,coverage_description,AW_SRC.ebao.claim_t_clm_coverage.coverage_desc,AW_SRC.ebao.claim_t_clm_coverage.coverage_desc,false,false,Null,STRING()
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,parent_coverage_code,parent_coverage_code,AW_SRC.ebao.claim_t_clm_coverage.parent_coverage_code,AW_SRC.ebao.claim_t_clm_coverage.parent_coverage_code,false,false,Null,STRING()
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,product_code,product_code,AW_SRC.ebao.claim_t_clm_coverage.product_code,AW_SRC.ebao.claim_t_clm_coverage.product_code,false,false,Null,STRING()
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,status_code,status_code,AW_SRC.ebao.claim_t_clm_item.status_code,AW_SRC.ebao.claim_t_clm_item.status_code,false,false,Null,STRING()
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,sequence_number,sequence_number,AW_SRC.ebao.claim_t_clm_item.seq_no,AW_SRC.ebao.claim_t_clm_item.seq_no,false,false,Null,STRING(10)
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,loss_status_code,loss_status_code,AW_SRC.ebao.claim_t_clm_item.loss_status,AW_SRC.ebao.claim_t_clm_item.loss_status,false,false,Null,STRING()
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,salvage_status_code,salvage_status_code,AW_SRC.ebao.claim_t_clm_item.salvage_status,AW_SRC.ebao.claim_t_clm_item.salvage_status,false,false,Null,STRING()
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,subrogation_status_code,subrogation_status_code,AW_SRC.ebao.claim_t_clm_item.subrogation_status,AW_SRC.ebao.claim_t_clm_item.subrogation_status,false,false,Null,STRING()
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,record_update_user_identifier,record_update_user_identifier,,,false,false,Null,VARCHAR(20)
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+SUBCLAIM_COVERAGE,SUBCLAIM_COVERAGE,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+CLAIM_SUPPL,CLAIM_SUPPL,claim_key,claim_key,,,true,true,Not Null,BIGINT
+CLAIM_SUPPL,CLAIM_SUPPL,region_name,region_name,,,false,false,Null,STRING(50)
+CLAIM_SUPPL,CLAIM_SUPPL,source_system_code,source_system_code,,,false,false,Null,STRING(255)
+CLAIM_SUPPL,CLAIM_SUPPL,claim_alternate_cause_code,claim_alternate_cause_code,iVOS only edw_preprod.dbo.map_claim_edw_CLAIM_ALTERNATE_CAUSE_CODE,iVOS only edw_preprod.dbo.map_claim_edw_CLAIM_ALTERNATE_CAUSE_CODE,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,claim_alternate_cause_name,claim_alternate_cause_name,iVOS only edw_preprod.dbo.map_claim_edw_CLAIM_ALTERNATE_CAUSE_DESC,iVOS only edw_preprod.dbo.map_claim_edw_CLAIM_ALTERNATE_CAUSE_DESC,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,claim_alternate_cause_group_code,claim_alternate_cause_group_code,iVOS only edw_preprod.dbo.map_claim_edw_CLAIM_ALT_CAUSE_GROUP_CODE,iVOS only edw_preprod.dbo.map_claim_edw_CLAIM_ALT_CAUSE_GROUP_CODE,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,claim_alternate_cause_group_name,claim_alternate_cause_group_name,iVOS only edw_preprod.dbo.map_claim_edw_CLAIM_ALT_CAUSE_GROUP_DESC,iVOS only edw_preprod.dbo.map_claim_edw_CLAIM_ALT_CAUSE_GROUP_DESC,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,claim_status_paid_code,claim_status_paid_code,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMSTPAID,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMSTPAID,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,claim_status_paid_name,claim_status_paid_name,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMSTPADESC,iVOS only edw_preprod.dbo.map_claim_edw_CLAIMSTPADESC,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,additional_claimant_status_code,additional_claimant_status_code,iVOS only edw_preprod.dbo.map_claim_edw_ADDTL_CLAIMANT_STATUS_CODE,iVOS only edw_preprod.dbo.map_claim_edw_ADDTL_CLAIMANT_STATUS_CODE,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,additional_claimant_status_name,additional_claimant_status_name,iVOS only edw_preprod.dbo.map_claim_edw_ADDTL_CLAIMANT_STATUS_DESC,iVOS only edw_preprod.dbo.map_claim_edw_ADDTL_CLAIMANT_STATUS_DESC,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,master_claim_code,master_claim_code,"Sample Values:
+Y
+N
+
+Uncoded
+
+ edw_preprod.dbo.map_claim_edw_MASTERCLAIM","Sample Values:
+Y
+N
+
+Uncoded
+
+ edw_preprod.dbo.map_claim_edw_MASTERCLAIM",false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,master_claim_number,master_claim_number,"Sample values but not limited to:
+
+2012017090
+2022007939
+2019008694-5
+2011014126
+ edw_preprod.dbo.map_claim_edw_MASTER_CLAIM_NUMBER","Sample values but not limited to:
+
+2012017090
+2022007939
+2019008694-5
+2011014126
+ edw_preprod.dbo.map_claim_edw_MASTER_CLAIM_NUMBER",false,false,Null,STRING(15)
+CLAIM_SUPPL,CLAIM_SUPPL,contract_agency_code,contract_agency_code,iVOS only edw_preprod.dbo.map_claim_edw_CONTRACT_AGENCY,iVOS only edw_preprod.dbo.map_claim_edw_CONTRACT_AGENCY,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,contract_number,contract_number,iVOS only edw_preprod.dbo.map_claim_edw_CONTRACT_NUMBER,iVOS only edw_preprod.dbo.map_claim_edw_CONTRACT_NUMBER,false,false,Null,STRING(20)
+CLAIM_SUPPL,CLAIM_SUPPL,rpg_certificate_member_code,rpg_certificate_member_code,iVOS only edw_preprod.dbo.map_claim_edw_RPGCERTIFICATEMEMBER,iVOS only edw_preprod.dbo.map_claim_edw_RPGCERTIFICATEMEMBER,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,rpg_certificate_number,rpg_certificate_number,iVOS only edw_preprod.dbo.map_claim_edw_RPGCERTIFICATENUMBER,iVOS only edw_preprod.dbo.map_claim_edw_RPGCERTIFICATENUMBER,false,false,Null,STRING(30)
+CLAIM_SUPPL,CLAIM_SUPPL,procede_claim_group_name,procede_claim_group_name,iVOS only edw_preprod.dbo.map_claim_edw_PROCEDE_CLAIM_GROUP_NAME,iVOS only edw_preprod.dbo.map_claim_edw_PROCEDE_CLAIM_GROUP_NAME,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,coverage_confirmation_name,coverage_confirmation_name,iVOS only edw_preprod.dbo.map_claim_edw_COVERAGE_CONFIRMATION_DESC,iVOS only edw_preprod.dbo.map_claim_edw_COVERAGE_CONFIRMATION_DESC,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,duty_to_defend_name,duty_to_defend_name,iVOS only edw_preprod.dbo.map_claim_edw_DUTY_TO_DEFEND_DESC,iVOS only edw_preprod.dbo.map_claim_edw_DUTY_TO_DEFEND_DESC,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,medical_clashes_name,medical_clashes_name,iVOS only edw_preprod.dbo.map_claim_edw_MEDICAL_CLASHES_DESC,iVOS only edw_preprod.dbo.map_claim_edw_MEDICAL_CLASHES_DESC,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,medical_clashes_flag_name,medical_clashes_flag_name,iVOS only edw_preprod.dbo.map_claim_edw_MEDICAL_CLASHES_FLAG_DESC,iVOS only edw_preprod.dbo.map_claim_edw_MEDICAL_CLASHES_FLAG_DESC,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,incident_location_description_text,incident_location_description_text,iVOS only edw_preprod.dbo.map_claim_edw_INCIDENT_LOCATION_DESC,iVOS only edw_preprod.dbo.map_claim_edw_INCIDENT_LOCATION_DESC,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,litigation_type_name,litigation_type_name,iVOS only edw_preprod.dbo.map_claim_edw_LITIGATION_TYPE_DESC,iVOS only edw_preprod.dbo.map_claim_edw_LITIGATION_TYPE_DESC,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,all_other_perils_name,all_other_perils_name,iVOS only edw_preprod.dbo.map_claim_edw_AOP_DESC,iVOS only edw_preprod.dbo.map_claim_edw_AOP_DESC,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,affiliate_claim_number,affiliate_claim_number,iVOS only edw_preprod.dbo.map_claim_edw_AFFILIATE_CLAIM_NUMBER,iVOS only edw_preprod.dbo.map_claim_edw_AFFILIATE_CLAIM_NUMBER,false,false,Null,STRING(25)
+CLAIM_SUPPL,CLAIM_SUPPL,post_traumatic_stress_disorder_indicator,post_traumatic_stress_disorder_indicator,iVOS only edw_preprod.dbo.map_claim_edw_PTSD_FLAG,iVOS only edw_preprod.dbo.map_claim_edw_PTSD_FLAG,false,false,Null,VARCHAR(10)
+CLAIM_SUPPL,CLAIM_SUPPL,loss_indicator,loss_indicator,iVOS only edw_preprod.dbo.map_claim_edw_LOSS_INDICATOR,iVOS only edw_preprod.dbo.map_claim_edw_LOSS_INDICATOR,false,false,Null,SMALLINT
+CLAIM_SUPPL,CLAIM_SUPPL,document_path_text,document_path_text,edw_preprod.dbo.map_claim_edw_DOC_PATH,edw_preprod.dbo.map_claim_edw_DOC_PATH,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,incident_address_line_1_text,incident_address_line_1_text,iVOS only edw_preprod.dbo.map_claim_edw_INCIDENT_ADDRESS1,iVOS only edw_preprod.dbo.map_claim_edw_INCIDENT_ADDRESS1,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,incident_address_line_2_text,incident_address_line_2_text,iVOS only edw_preprod.dbo.map_claim_edw_INCIDENT_ADDRESS2,iVOS only edw_preprod.dbo.map_claim_edw_INCIDENT_ADDRESS2,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,incident_city_name,incident_city_name,iVOS only edw_preprod.dbo.map_claim_edw_INCIDENT_CITY,iVOS only edw_preprod.dbo.map_claim_edw_INCIDENT_CITY,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,incident_state_name,incident_state_name,iVOS only edw_preprod.dbo.map_claim_edw_INCIDENT_STATE,iVOS only edw_preprod.dbo.map_claim_edw_INCIDENT_STATE,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,incident_postal_code,incident_postal_code,iVOS only edw_preprod.dbo.map_claim_edw_INCIDENT_ZIP_CODE,iVOS only edw_preprod.dbo.map_claim_edw_INCIDENT_ZIP_CODE,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,incident_county_name,incident_county_name,iVOS only edw_preprod.dbo.map_claim_edw_INCIDENT_COUNTY,iVOS only edw_preprod.dbo.map_claim_edw_INCIDENT_COUNTY,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,reported_to_darwin_timestamp,reported_to_darwin_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_SUPPL,CLAIM_SUPPL,war_hazard_status_code,war_hazard_status_code,iVOS only edw_preprod.dbo.map_claim_edw_WAR_HAZARD_STATUS_CODE,iVOS only edw_preprod.dbo.map_claim_edw_WAR_HAZARD_STATUS_CODE,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,war_hazard_status_name,war_hazard_status_name,iVOS only edw_preprod.dbo.map_claim_edw_WAR_HAZARD_STATUS_DESC,iVOS only edw_preprod.dbo.map_claim_edw_WAR_HAZARD_STATUS_DESC,false,false,Null,STRING()
+CLAIM_SUPPL,CLAIM_SUPPL,war_hazard_submitted_timestamp,war_hazard_submitted_timestamp,iVOS only,iVOS only,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_SUPPL,CLAIM_SUPPL,war_hazard_approved_timestamp,war_hazard_approved_timestamp,iVOS only,iVOS only,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_SUPPL,CLAIM_SUPPL,inbox_timestamp,inbox_timestamp,iVOS only,iVOS only,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_SUPPL,CLAIM_SUPPL,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_SUPPL,CLAIM_SUPPL,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_SUPPL,CLAIM_SUPPL,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+CLAIM_SUPPL,CLAIM_SUPPL,record_update_user_identifier,record_update_user_identifier,,,false,false,Null,VARCHAR(20)
+CLAIM_SUPPL,CLAIM_SUPPL,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+CLAIM_SUPPL,CLAIM_SUPPL,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_SUPPL,CLAIM_SUPPL,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_SUPPL,CLAIM_SUPPL,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+CLAIM_SUPPL,CLAIM_SUPPL,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+STANDARD_ATTRIBUTE_REPORTING_REF,STANDARD_ATTRIBUTE_REPORTING_REF,standard_attribute_key,standard_attribute_key,,,false,true,Not Null,BIGINT
+STANDARD_ATTRIBUTE_REPORTING_REF,STANDARD_ATTRIBUTE_REPORTING_REF,standard_attribute_name,standard_attribute_name,,,false,false,Null,STRING(50)
+STANDARD_ATTRIBUTE_REPORTING_REF,STANDARD_ATTRIBUTE_REPORTING_REF,standard_attribute_code,standard_attribute_code,,,false,false,Null,STRING(255)
+STANDARD_ATTRIBUTE_REPORTING_REF,STANDARD_ATTRIBUTE_REPORTING_REF,standard_attribute_value,standard_attribute_value,,,false,false,Null,STRING(255)
+STANDARD_ATTRIBUTE_REPORTING_REF,STANDARD_ATTRIBUTE_REPORTING_REF,standard_attribute_effective_start_date,standard_attribute_effective_start_date,,,false,false,Null,DATE
+STANDARD_ATTRIBUTE_REPORTING_REF,STANDARD_ATTRIBUTE_REPORTING_REF,standard_attribute_effective_end_date,standard_attribute_effective_end_date,,,false,false,Null,DATE
+STANDARD_ATTRIBUTE_REPORTING_REF,STANDARD_ATTRIBUTE_REPORTING_REF,is_active_indicator,is_active_indicator,,,false,false,Null,VARCHAR(10)
+STANDARD_ATTRIBUTE_REPORTING_REF,STANDARD_ATTRIBUTE_REPORTING_REF,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+STANDARD_ATTRIBUTE_REPORTING_REF,STANDARD_ATTRIBUTE_REPORTING_REF,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+STANDARD_ATTRIBUTE_REPORTING_REF,STANDARD_ATTRIBUTE_REPORTING_REF,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+STANDARD_ATTRIBUTE_REPORTING_REF,STANDARD_ATTRIBUTE_REPORTING_REF,record_update_user_identifier,record_update_user_identifier,,,false,false,Null,VARCHAR(20)
+STANDARD_ATTRIBUTE_REPORTING_REF,STANDARD_ATTRIBUTE_REPORTING_REF,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+STANDARD_ATTRIBUTE_REPORTING_REF,STANDARD_ATTRIBUTE_REPORTING_REF,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+STANDARD_ATTRIBUTE_REPORTING_REF,STANDARD_ATTRIBUTE_REPORTING_REF,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+STANDARD_ATTRIBUTE_REPORTING_REF,STANDARD_ATTRIBUTE_REPORTING_REF,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+STANDARD_ATTRIBUTE_REPORTING_REF,STANDARD_ATTRIBUTE_REPORTING_REF,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,attribute_key,attribute_key,,,false,true,Not Null,BIGINT
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,region_name,region_name,,,false,false,Null,STRING(50)
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,source_system_code,source_system_code,,,false,false,Null,STRING(255)
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,standard_attribute_key,standard_attribute_key,,,true,false,Not Null,BIGINT
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,attribute_name,attribute_name,,,false,false,Null,STRING(50)
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,source_attribute_code,source_attribute_code,,,false,false,Null,STRING(255)
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,source_attribute_value,source_attribute_value,,,false,false,Null,STRING(255)
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,source_attribute_effective_start_date,source_attribute_effective_start_date,,,false,false,Null,DATE
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,source_attribute_effective_end_date,source_attribute_effective_end_date,,,false,false,Null,DATE
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,is_active_indicator,is_active_indicator,,,false,false,Null,VARCHAR(10)
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,record_update_user_identifier,record_update_user_identifier,,,false,false,Null,VARCHAR(20)
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+ATTRIBUTE_MAPPING_REF,ATTRIBUTE_MAPPING_REF,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+CLAIM_LITIGATION,CLAIM_LITIGATION,claim_litigation_key,claim_litigation_key,,,false,true,Not Null,BIGINT
+CLAIM_LITIGATION,CLAIM_LITIGATION,claim_key,claim_key,,,true,false,Not Null,BIGINT
+CLAIM_LITIGATION,CLAIM_LITIGATION,region_name,region_name,,,false,false,Null,STRING(50)
+CLAIM_LITIGATION,CLAIM_LITIGATION,source_system_code,source_system_code,,,false,false,Null,STRING(255)
+CLAIM_LITIGATION,CLAIM_LITIGATION,subclaim_key,subclaim_key,edw_preprod.dbo.map_claim_edw_No_Match,edw_preprod.dbo.map_claim_edw_No_Match,true,false,Not Null,BIGINT
+CLAIM_LITIGATION,CLAIM_LITIGATION,litigation_or_suit_identifier,litigation_or_suit_identifier,"AW_SRC.ebao.claim_t_clm_litigation.suit_id numeric(19,0) & WH_ST.MVI_EDW_CLAIM_LITIGATION.LITIGATION_ID varchar2","AW_SRC.ebao.claim_t_clm_litigation.suit_id numeric(19,0) & WH_ST.MVI_EDW_CLAIM_LITIGATION.LITIGATION_ID varchar2",false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,litigation_matter_number,litigation_matter_number,AW_SRC.ebao.claim_t_clm_litigation.suit_case_number nvarchar(MAX) & WH_ST.MVI_EDW_CLAIM_LITIGATION.LITIGATION_MATTER_NUMBER varchar2,AW_SRC.ebao.claim_t_clm_litigation.suit_case_number nvarchar(MAX) & WH_ST.MVI_EDW_CLAIM_LITIGATION.LITIGATION_MATTER_NUMBER varchar2,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,case_or_suit_name,case_or_suit_name,AW_SRC.ebao.claim_t_clm_litigation.suit_name nvarchar(MAX) & WH_ST.MVI_EDW_CLAIM_LITIGATION.CASE_NAME varchar2,AW_SRC.ebao.claim_t_clm_litigation.suit_name nvarchar(MAX) & WH_ST.MVI_EDW_CLAIM_LITIGATION.CASE_NAME varchar2,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,litigation_type_code,litigation_type_code,AW_SRC.ebao.claim_t_clm_litigation.suit_type nvarchar(10) & WH_ST.MVI_EDW_CLAIM_LITIGATION.LITIGATION_TYPE varchar2,AW_SRC.ebao.claim_t_clm_litigation.suit_type nvarchar(10) & WH_ST.MVI_EDW_CLAIM_LITIGATION.LITIGATION_TYPE varchar2,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,litigation_type_description,litigation_type_description,AW_SRC.ebao.claim_t_clm_litigation.dynamic_fields (derived) & WH_ST.MVI_EDW_CLAIM_LITIGATION.LITIGATION_TYPE_DESC varchar2,AW_SRC.ebao.claim_t_clm_litigation.dynamic_fields (derived) & WH_ST.MVI_EDW_CLAIM_LITIGATION.LITIGATION_TYPE_DESC varchar2,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,litigation_status,litigation_status,AW_SRC.ebao.claim_t_clm_litigation.suit_status nvarchar(10) & WH_ST.MVI_EDW_CLAIM_LITIGATION.LITIGATION_STATUS varchar2,AW_SRC.ebao.claim_t_clm_litigation.suit_status nvarchar(10) & WH_ST.MVI_EDW_CLAIM_LITIGATION.LITIGATION_STATUS varchar2,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,litigation_status_description,litigation_status_description,AW_SRC.ebao.claim_t_clm_litigation.suit_status_remark nvarchar(MAX) & WH_ST.MVI_EDW_CLAIM_LITIGATION.STATUS varchar2,AW_SRC.ebao.claim_t_clm_litigation.suit_status_remark nvarchar(MAX) & WH_ST.MVI_EDW_CLAIM_LITIGATION.STATUS varchar2,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,filed_or_open_date,filed_or_open_date,AW_SRC.ebao.claim_t_clm_litigation.suit_open_date datetime2(6) & WH_ST.MVI_EDW_CLAIM_LITIGATION.FILED_DATE date,AW_SRC.ebao.claim_t_clm_litigation.suit_open_date datetime2(6) & WH_ST.MVI_EDW_CLAIM_LITIGATION.FILED_DATE date,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_LITIGATION,CLAIM_LITIGATION,served_date,served_date,AW_SRC.ebao.claim_t_clm_litigation.tp_date_of_suit_served datetime2(0) & WH_ST.MVI_EDW_CLAIM_LITIGATION.SERVED_DATE date,AW_SRC.ebao.claim_t_clm_litigation.tp_date_of_suit_served datetime2(0) & WH_ST.MVI_EDW_CLAIM_LITIGATION.SERVED_DATE date,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_LITIGATION,CLAIM_LITIGATION,settlement_date,settlement_date,AW_SRC.ebao.claim_t_clm_litigation.suit_close_date datetime2(6) & WH_ST.MVI_EDW_CLAIM_LITIGATION.SETTLEMENT_DATE date,AW_SRC.ebao.claim_t_clm_litigation.suit_close_date datetime2(6) & WH_ST.MVI_EDW_CLAIM_LITIGATION.SETTLEMENT_DATE date,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_LITIGATION,CLAIM_LITIGATION,settlement_amount,settlement_amount,"AW_SRC.ebao.claim_t_clm_litigation.deposition_amount numeric(20,2) & WH_ST.MVI_EDW_CLAIM_LITIGATION.SETTLEMENT_AMOUNT varchar2","AW_SRC.ebao.claim_t_clm_litigation.deposition_amount numeric(20,2) & WH_ST.MVI_EDW_CLAIM_LITIGATION.SETTLEMENT_AMOUNT varchar2",false,false,Null,"DECIMAL(38,4)"
+CLAIM_LITIGATION,CLAIM_LITIGATION,appeal_indicator,appeal_indicator,AW_SRC.ebao.claim_t_clm_litigation.suit_type = 'APPEAL' (derived) & WH_ST.MVI_EDW_CLAIM_LITIGATION.APPEALED varchar2,AW_SRC.ebao.claim_t_clm_litigation.suit_type = 'APPEAL' (derived) & WH_ST.MVI_EDW_CLAIM_LITIGATION.APPEALED varchar2,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,appeal_date,appeal_date,AW_SRC.ebao.claim_t_clm_litigation.tp_date_of_letter_of_demand datetime2(0) (proxy) & WH_ST.MVI_EDW_CLAIM_LITIGATION.APPEAL_DATE date,AW_SRC.ebao.claim_t_clm_litigation.tp_date_of_letter_of_demand datetime2(0) (proxy) & WH_ST.MVI_EDW_CLAIM_LITIGATION.APPEAL_DATE date,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_LITIGATION,CLAIM_LITIGATION,appealed_amount,appealed_amount,"AW_SRC.ebao.claim_t_clm_litigation.amount_apealed numeric(20,2) & WH_ST.MVI_EDW_CLAIM_LITIGATION.DEMAND number","AW_SRC.ebao.claim_t_clm_litigation.amount_apealed numeric(20,2) & WH_ST.MVI_EDW_CLAIM_LITIGATION.DEMAND number",false,false,Null,"DECIMAL(38,4)"
+CLAIM_LITIGATION,CLAIM_LITIGATION,venue_state,venue_state,AW_SRC.ebao.claim_t_clm_litigation.suit_location nvarchar(MAX) & WH_ST.MVI_EDW_CLAIM_LITIGATION.VENUE_STATE_CODE varchar2,AW_SRC.ebao.claim_t_clm_litigation.suit_location nvarchar(MAX) & WH_ST.MVI_EDW_CLAIM_LITIGATION.VENUE_STATE_CODE varchar2,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,venue_city,venue_city,AW_SRC.ebao.claim_t_clm_litigation.suit_location nvarchar(MAX) & WH_ST.MVI_EDW_CLAIM_LITIGATION.VENUE_CITY varchar2,AW_SRC.ebao.claim_t_clm_litigation.suit_location nvarchar(MAX) & WH_ST.MVI_EDW_CLAIM_LITIGATION.VENUE_CITY varchar2,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,venue_county,venue_county,AW_SRC.ebao.claim_t_clm_litigation.suit_location nvarchar(MAX) & WH_ST.MVI_EDW_CLAIM_LITIGATION.VENUE_COUNTY varchar2,AW_SRC.ebao.claim_t_clm_litigation.suit_location nvarchar(MAX) & WH_ST.MVI_EDW_CLAIM_LITIGATION.VENUE_COUNTY varchar2,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,jurisdiction_name,jurisdiction_name,AW_SRC.ebao.claim_t_clm_litigation.region_source tinyint & WH_ST.MVI_EDW_CLAIM_LITIGATION.JURISDICTION varchar2,AW_SRC.ebao.claim_t_clm_litigation.region_source tinyint & WH_ST.MVI_EDW_CLAIM_LITIGATION.JURISDICTION varchar2,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,plaintiff_name,plaintiff_name,AW_SRC.ebao.claim_t_clm_litigation.dynamic_fields (derived) & WH_ST.MVI_EDW_CLAIM_LITIGATION.PLAINTIFF_NAME varchar2,AW_SRC.ebao.claim_t_clm_litigation.dynamic_fields (derived) & WH_ST.MVI_EDW_CLAIM_LITIGATION.PLAINTIFF_NAME varchar2,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,plaintiff_law_firm_name,plaintiff_law_firm_name,AW_SRC.ebao.claim_t_clm_litigation.tp_claimant_law_firm_name nvarchar(140) & WH_ST.MVI_EDW_CLAIM_LITIGATION.PLAINTIFF_TYPE varchar2,AW_SRC.ebao.claim_t_clm_litigation.tp_claimant_law_firm_name nvarchar(140) & WH_ST.MVI_EDW_CLAIM_LITIGATION.PLAINTIFF_TYPE varchar2,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,defense_counsel_name,defense_counsel_name,AW_SRC.ebao.claim_t_clm_litigation.aw_defence_counsel_name nvarchar(140) & WH_ST.MVI_EDW_CLAIM_LITIGATION.LEGAL_SECRETARY / PARALEGAL,AW_SRC.ebao.claim_t_clm_litigation.aw_defence_counsel_name nvarchar(140) & WH_ST.MVI_EDW_CLAIM_LITIGATION.LEGAL_SECRETARY / PARALEGAL,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,defense_law_firm_name,defense_law_firm_name,AW_SRC.ebao.claim_t_clm_litigation.aw_defense_law_firm_name nvarchar(140) & WH_ST.MVI_EDW_CLAIM_LITIGATION.COURT_LOCATION (proxy),AW_SRC.ebao.claim_t_clm_litigation.aw_defense_law_firm_name nvarchar(140) & WH_ST.MVI_EDW_CLAIM_LITIGATION.COURT_LOCATION (proxy),false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,judge_name,judge_name,AW_SRC.ebao.claim_t_clm_litigation.dynamic_fields & WH_ST.MVI_EDW_CLAIM_LITIGATION.JUDGE_NAME varchar2,AW_SRC.ebao.claim_t_clm_litigation.dynamic_fields & WH_ST.MVI_EDW_CLAIM_LITIGATION.JUDGE_NAME varchar2,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,court_disposition_date,court_disposition_date,AW_SRC.ebao.claim_t_clm_litigation.suit_close_date datetime2(6) & WH_ST.MVI_EDW_CLAIM_LITIGATION.COURT_DISPOSITION_DATE date,AW_SRC.ebao.claim_t_clm_litigation.suit_close_date datetime2(6) & WH_ST.MVI_EDW_CLAIM_LITIGATION.COURT_DISPOSITION_DATE date,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_LITIGATION,CLAIM_LITIGATION,litigation_result_text,litigation_result_text,AW_SRC.ebao.claim_t_clm_litigation.mediation_successful nvarchar(50) & WH_ST.MVI_EDW_CLAIM_LITIGATION.LITIGATION_RESULT_DESC varchar2,AW_SRC.ebao.claim_t_clm_litigation.mediation_successful nvarchar(50) & WH_ST.MVI_EDW_CLAIM_LITIGATION.LITIGATION_RESULT_DESC varchar2,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,liability_percentage_on_insured,liability_percentage_on_insured,AW_SRC.ebao.claim_t_clm_litigation only,AW_SRC.ebao.claim_t_clm_litigation only,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,estimated_litigation_award_amount,estimated_litigation_award_amount,AW_SRC.ebao.claim_t_clm_litigation only,AW_SRC.ebao.claim_t_clm_litigation only,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,total_savings_amount,total_savings_amount,AW_SRC.ebao.claim_t_clm_litigation only,AW_SRC.ebao.claim_t_clm_litigation only,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,coverage_counsel_appointed_date,coverage_counsel_appointed_date,AW_SRC.ebao.claim_t_clm_litigation only,AW_SRC.ebao.claim_t_clm_litigation only,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,proactive_tp_claim_activation_text,proactive_tp_claim_activation_text,AW_SRC.ebao.claim_t_clm_litigation only,AW_SRC.ebao.claim_t_clm_litigation only,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,proactive_tp_claim_success_text,proactive_tp_claim_success_text,AW_SRC.ebao.claim_t_clm_litigation only,AW_SRC.ebao.claim_t_clm_litigation only,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,mediation_engaged_text,mediation_engaged_text,AW_SRC.ebao.claim_t_clm_litigation only,AW_SRC.ebao.claim_t_clm_litigation only,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,mediator_name,mediator_name,AW_SRC.ebao.claim_t_clm_litigation only,AW_SRC.ebao.claim_t_clm_litigation only,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,mediation_date,mediation_date,AW_SRC.ebao.claim_t_clm_litigation only,AW_SRC.ebao.claim_t_clm_litigation only,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,coverage_law_firm_name,coverage_law_firm_name,AW_SRC.ebao.claim_t_clm_litigation only,AW_SRC.ebao.claim_t_clm_litigation only,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,third_party_counsel_type_code,third_party_counsel_type_code,AW_SRC.ebao.claim_t_clm_litigation only,AW_SRC.ebao.claim_t_clm_litigation only,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,region_source,region_source,AW_SRC.ebao.claim_t_clm_litigation only,AW_SRC.ebao.claim_t_clm_litigation only,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,docket_number,docket_number,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,jurisdiction_description,jurisdiction_description,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,examiner_code,examiner_code,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,carrier_name,carrier_name,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,insured_name,insured_name,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,litigation_budget_amount,litigation_budget_amount,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,false,false,Null,"DECIMAL(38,4)"
+CLAIM_LITIGATION,CLAIM_LITIGATION,court_code,court_code,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,court_room_text,court_room_text,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,demand_date,demand_date,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,statutory_demand_text,statutory_demand_text,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,arbitration_amount,arbitration_amount,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,penalty_amount,penalty_amount,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,fine_amount,fine_amount,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,settlement_terms_text,settlement_terms_text,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,settlement_status_text,settlement_status_text,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,authority_approved_amount,authority_approved_amount,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,trial_result_text,trial_result_text,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,WH_ST.MVI_EDW_CLAIM_LITIGATION onlu,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,appeal_result_text,appeal_result_text,,,false,false,Null,STRING()
+CLAIM_LITIGATION,CLAIM_LITIGATION,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_LITIGATION,CLAIM_LITIGATION,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_LITIGATION,CLAIM_LITIGATION,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+CLAIM_LITIGATION,CLAIM_LITIGATION,record_update_user_identifier,record_update_user_identifier,,,false,false,Null,VARCHAR(20)
+CLAIM_LITIGATION,CLAIM_LITIGATION,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+CLAIM_LITIGATION,CLAIM_LITIGATION,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_LITIGATION,CLAIM_LITIGATION,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_LITIGATION,CLAIM_LITIGATION,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+CLAIM_LITIGATION,CLAIM_LITIGATION,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+Broker Office,BROKER_OFFICE,broker_office_key,broker_office_key,,,false,true,Not Null,BIGINT
+Broker Office,BROKER_OFFICE,mdm_record_state,mdm_record_state,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,broker_office_name,broker_office_name,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,incorporation_country_name,incorporation_country_name,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,entity_type_code,entity_type_code,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,region_name,region_name,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,status_code,status_code,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,status_reason_code,status_reason_code,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,effective_start_date,effective_start_date,,,false,false,Null,DATE
+Broker Office,BROKER_OFFICE,effective_end_date,effective_end_date,,,false,false,Null,DATE
+Broker Office,BROKER_OFFICE,latest_policy_inception_date,latest_policy_inception_date,,,false,false,Null,DATE
+Broker Office,BROKER_OFFICE,address_default_indicator,address_default_indicator,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_type_code,address_type_code,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_usage_type_code,address_usage_type_code,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_line_1_text,address_line_1_text,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_line_2_text,address_line_2_text,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_line_3_text,address_line_3_text,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_city_name,address_city_name,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_county_name,address_county_name,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_state_name,address_state_name,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_country_name,address_country_name,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_postal_code,address_postal_code,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_postal_code_extension,address_postal_code_extension,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_coordinate_system_code,address_coordinate_system_code,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_location_coordinate_desc,address_location_coordinate_desc,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_status_code,address_status_code,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_latitude_code,address_latitude_code,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_longitude_code,address_longitude_code,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_effective_start_date,address_effective_start_date,,,false,false,Null,DATE
+Broker Office,BROKER_OFFICE,address_effective_end_date,address_effective_end_date,,,false,false,Null,DATE
+Broker Office,BROKER_OFFICE,address_enriched_indicator,address_enriched_indicator,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_verification_status_code,address_verification_status_code,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_verification_status_message,address_verification_status_message,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,address_elevation_code,address_elevation_code,,,false,false,Null,STRING()
+Broker Office,BROKER_OFFICE,source_last_update_timestamp,source_last_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Broker Office,BROKER_OFFICE,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Broker Office,BROKER_OFFICE,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Broker Office,BROKER_OFFICE,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+Broker Office,BROKER_OFFICE,record_update_user_identifier,record_update_user_identifier,,,false,false,Null,VARCHAR(20)
+Broker Office,BROKER_OFFICE,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+Broker Office,BROKER_OFFICE,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Broker Office,BROKER_OFFICE,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+Broker Office,BROKER_OFFICE,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+Broker Office,BROKER_OFFICE,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+COVERAGE_REFERENCE,COVERAGE_REFERENCE,coverage_reference_key,coverage_reference_key,Surrogate key to uniquely identify each coverage,Surrogate key to uniquely identify each coverage,false,true,Not Null,BIGINT
+COVERAGE_REFERENCE,COVERAGE_REFERENCE,source_system_code,source_system_code,,,false,false,Null,STRING(255)
+COVERAGE_REFERENCE,COVERAGE_REFERENCE,coverage_code,coverage_code,awacus_claim.t_clm_coverage.coverage_code,awacus_claim.t_clm_coverage.coverage_code,false,false,Null,STRING()
+COVERAGE_REFERENCE,COVERAGE_REFERENCE,coverage_name,coverage_name,awacus_claim.t_clm_coverage.coverage_name,awacus_claim.t_clm_coverage.coverage_name,false,false,Null,STRING()
+COVERAGE_REFERENCE,COVERAGE_REFERENCE,product_department_name,product_department_name,awacus_claim.t_clm_product_line.produce_line_name,awacus_claim.t_clm_product_line.produce_line_name,false,false,Null,STRING()
+COVERAGE_REFERENCE,COVERAGE_REFERENCE,product_code,product_code,awacus_claim.t_clm_coverage.product_code,awacus_claim.t_clm_coverage.product_code,false,false,Null,STRING()
+COVERAGE_REFERENCE,COVERAGE_REFERENCE,coverage_desc,coverage_desc,awacus_claim.t_clm_coverage.coverage_desc,awacus_claim.t_clm_coverage.coverage_desc,false,false,Null,STRING()
+COVERAGE_REFERENCE,COVERAGE_REFERENCE,coverage_type_code,coverage_type_code,awacus_claim.t_clm_coverage.coverage_type_code,awacus_claim.t_clm_coverage.coverage_type_code,false,false,Null,STRING()
+COVERAGE_REFERENCE,COVERAGE_REFERENCE,coverage_type_name,coverage_type_name,awacus_claim.t_clm_coverage_type.coverage_type_name,awacus_claim.t_clm_coverage_type.coverage_type_name,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_key,claim_key,,,true,true,Not Null,BIGINT
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,subclaim_key,subclaim_key,,,true,true,Not Null,BIGINT
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,subclaim_coverage_key,subclaim_coverage_key,,,true,true,Not Null,BIGINT
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,policy_key,policy_key,,,true,true,Not Null,BIGINT
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,payee_key,payee_key,,,true,true,Not Null,BIGINT
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,source_transaction_identifier,source_transaction_identifier,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.transaction_reference,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.transaction_reference,false,true,Not Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,transaction_type_text,transaction_type_text,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.AUTH_STATUS_OID,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.AUTH_STATUS_OID,false,true,Not Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_type,claim_type,RESERVET_TYPE.CLAIM_TYPE_CODE - for eBAO Broader category,RESERVET_TYPE.CLAIM_TYPE_CODE - for eBAO Broader category,false,true,Not Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,original_currency_code,original_currency_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.AUTH_STATUS_OID,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.AUTH_STATUS_OID,false,true,Not Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,transaction_date,transaction_date,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.REPORTING_DAY__OID,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.REPORTING_DAY__OID,false,true,Not Null,DATE
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_movement_type_2_name,claim_movement_type_2_name,RESERVE_TYPE.reserve_type_name finer category for eBAO,RESERVE_TYPE.reserve_type_name finer category for eBAO,false,true,Not Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_movement_type_2_code,claim_movement_type_2_code,RESERVE_TYPE.reserve_type_cd for eBAO,RESERVE_TYPE.reserve_type_cd for eBAO,false,true,Not Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,transaction_amount_usd,transaction_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.TRN_AMT,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.TRN_AMT,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,transaction_amount_original,transaction_amount_original,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.AUTH_STATUS_OID,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.AUTH_STATUS_OID,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_reserve_amount_usd,claim_reserve_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_RES_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_RES_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_indemnity_reserve_amount_usd,claim_indemnity_reserve_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_IND_RES_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_IND_RES_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_subrogation_reserve_amount_usd,claim_subrogation_reserve_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SUB_RES_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SUB_RES_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_defense_reserve_amount_usd,claim_defense_reserve_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_DEF_RES_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_DEF_RES_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_expense_reserve_amount_usd,claim_expense_reserve_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_EXP_RES_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_EXP_RES_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_alae_reserve_amount_usd,claim_alae_reserve_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_ALAE_RES_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_ALAE_RES_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_legal_reserve_amount_usd,claim_legal_reserve_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LEG_RES_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LEG_RES_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_litigation_reserve_amount_usd,claim_litigation_reserve_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LIT_RES_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LIT_RES_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_salvage_reserve_amount_usd,claim_salvage_reserve_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SAL_RES_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SAL_RES_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_paid_amount_usd,claim_paid_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_PD_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_PD_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_indemnity_paid_amount_usd,claim_indemnity_paid_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_IND_PD_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_IND_PD_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_subrogation_paid_amount_usd,claim_subrogation_paid_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SUB_PD_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SUB_PD_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_defense_paid_amount_usd,claim_defense_paid_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_DEF_PD_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_DEF_PD_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_expense_paid_amount_usd,claim_expense_paid_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_EXP_PD_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_EXP_PD_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_alae_paid_amount_usd,claim_alae_paid_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_ALAE_PD_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_ALAE_PD_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_legal_paid_amount_usd,claim_legal_paid_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LEG_PD_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LEG_PD_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_litigation_paid_amount_usd,claim_litigation_paid_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LIT_PD_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LIT_PD_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_salvage_paid_amount_usd,claim_salvage_paid_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SAL_PD_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SAL_PD_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,outstanding_status_type_text,outstanding_status_type_text,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.OS_STATUS_OID,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.OS_STATUS_OID,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,full_gross_ultimate_indicator,full_gross_ultimate_indicator,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.FGU_AMOUNT_OID,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.FGU_AMOUNT_OID,false,false,Null,VARCHAR(10)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,audit_number,audit_number,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.audit_number,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.audit_number,false,false,Null,STRING(12)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_transaction_header_text,claim_transaction_header_text,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_TXN_HDR,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_TXN_HDR,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,transaction_timestamp,transaction_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,accounting_period_timestamp,accounting_period_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,region_name,region_name,,,false,false,Null,STRING(50)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,source_system_code,source_system_code,,,false,false,Null,STRING(255)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_user_identifier,claim_user_identifier,"EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_USR_OID
+""EDW_PREPROD"".""dbo"".""MAP_CLAIM_USER_EDW"".CLM_USR_CD","EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_USR_OID
+""EDW_PREPROD"".""dbo"".""MAP_CLAIM_USER_EDW"".CLM_USR_CD",false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_user_name,claim_user_name,"EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_USR_OID
+""EDW_PREPROD"".""dbo"".""MAP_CLAIM_USER_EDW"".CLM_USR_NAME","EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_USR_OID
+""EDW_PREPROD"".""dbo"".""MAP_CLAIM_USER_EDW"".CLM_USR_NAME",false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_payment_authorization_user_identifier,claim_payment_authorization_user_identifier,"EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLAIM_PAYMENT_AUTH_OID
+EDW_PREPROD.[cognos].[att_claim_payment_authori].claim_payment_authori_cd","EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLAIM_PAYMENT_AUTH_OID
+EDW_PREPROD.[cognos].[att_claim_payment_authori].claim_payment_authori_cd",false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_payment_authorization_user_name,claim_payment_authorization_user_name,"EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLAIM_PAYMENT_AUTH_OID
+EDW_PREPROD.[cognos].[att_claim_payment_authori].be_name","EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLAIM_PAYMENT_AUTH_OID
+EDW_PREPROD.[cognos].[att_claim_payment_authori].be_name",false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,participant_identifier,participant_identifier,"EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.PART_OID
+[EDW_PREPROD].DBO.MAP_PARTICIPANT_EDW.PART_CD","EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.PART_OID
+[EDW_PREPROD].DBO.MAP_PARTICIPANT_EDW.PART_CD",false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_paid_from_date,claim_paid_from_date,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_PAID_FROM_DAY__OID,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_PAID_FROM_DAY__OID,false,false,Null,DATE
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_paid_to_date,claim_paid_to_date,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_PAID_TO_DAY__OID,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_PAID_TO_DAY__OID,false,false,Null,DATE
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,entry_date,entry_date,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.ENTRY_DATE_DAY__OID,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.ENTRY_DATE_DAY__OID,false,false,Null,DATE
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,payment_date,payment_date,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.PAYMENT_DAY__OID,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.PAYMENT_DAY__OID,false,false,Null,DATE
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,posting_date,posting_date,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.POSTING_DAY__OID,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.POSTING_DAY__OID,false,false,Null,DATE
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,reporting_date,reporting_date,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.REPORTING_DAY__OID,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.REPORTING_DAY__OID,false,false,Null,DATE
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,payment_authorization_timestamp,payment_authorization_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,payment_authorization_time,payment_authorization_time,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.PAYMENT_AUTH_TIME,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.PAYMENT_AUTH_TIME,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,insert_timestamp,insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,settlement_due_timestamp,settlement_due_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,statistics_header_sequence_number,statistics_header_sequence_number,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.STATSHEADERSEQ,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.STATSHEADERSEQ,false,false,Null,STRING(255)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,statistics_section_sequence_number,statistics_section_sequence_number,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.STATSSECTIONSEQ,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.STATSSECTIONSEQ,false,false,Null,STRING(255)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,invoice_number,invoice_number,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.INVOICE_NUMBER,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.INVOICE_NUMBER,false,false,Null,STRING(35)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,routing_number,routing_number,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.Routing_Number,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.Routing_Number,false,false,Null,STRING(9)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,account_number,account_number,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.Account_Number,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.Account_Number,false,false,Null,STRING(20)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,fdr_audit_number,fdr_audit_number,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.FDR_AuditNumber,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.FDR_AuditNumber,false,false,Null,BIGINT
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,genius_outstanding_type_code,genius_outstanding_type_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.GGN_OUTSTANDING_TYPE_OID,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.GGN_OUTSTANDING_TYPE_OID,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,original_original_currency_code,original_original_currency_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.ORIG_ORIG_CURR_OID,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.ORIG_ORIG_CURR_OID,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_movement_type_name,claim_movement_type_name,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.DRG_TRANSACTIONTYPE,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.DRG_TRANSACTIONTYPE,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_transaction_as_line_of_business_code,claim_transaction_as_line_of_business_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_TXN_ASLOB,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_TXN_ASLOB,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,transaction_icp_code,transaction_icp_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.TRANSACTIONICP,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.TRANSACTIONICP,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,transaction_insurance_code,transaction_insurance_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.TRANSACTION_INS_CD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.TRANSACTION_INS_CD,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,financial_product_group_code,financial_product_group_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.FINPRODGROUP,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.FINPRODGROUP,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,reserve_group_code,reserve_group_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.RESERVEGROUP,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.RESERVEGROUP,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,coverage_code,coverage_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.COVERAGE,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.COVERAGE,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,payment_method_code,payment_method_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.PAYMENTMETHOD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.PAYMENTMETHOD,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,settlement_currency_code,settlement_currency_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.SettCurrCode,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.SettCurrCode,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,drg_transaction_type_code,drg_transaction_type_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.DRG_TRANSACTIONTYPE,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.DRG_TRANSACTIONTYPE,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,payment_delivery_type_code,payment_delivery_type_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.PAYMENTDELIVERYTYPE,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.PAYMENTDELIVERYTYPE,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,managing_business_unit_code,managing_business_unit_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.MBU,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.MBU,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,standard_entry_class_code,standard_entry_class_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.Standard_Entry_Class_Code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.Standard_Entry_Class_Code,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,actuarial_line_of_business_code,actuarial_line_of_business_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.ActuarialLOB,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.ActuarialLOB,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,underwriting_policy_source_code,underwriting_policy_source_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.UW_POLICY_SOURCE,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.UW_POLICY_SOURCE,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,level_01_code,level_01_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L01,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L01,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,level_02_code,level_02_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L02,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L02,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,level_03_code,level_03_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L03,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L03,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,level_04_code,level_04_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L04,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L04,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,level_05_code,level_05_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L05,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L05,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,level_06_code,level_06_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L06,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L06,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,level_07_code,level_07_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L07,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L07,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,level_08_code,level_08_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L08,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L08,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,level_09_code,level_09_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L09,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L09,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,level_10_code,level_10_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L10,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.L10,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,general_dimension_1_code,general_dimension_1_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.GD1,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.GD1,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,reporting_currency_1_code,reporting_currency_1_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.RPTCURR1_CD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.RPTCURR1_CD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,reporting_currency_2_code,reporting_currency_2_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.RPTCURR2_CD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.RPTCURR2_CD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,settlement_reporting_currency_1_code,settlement_reporting_currency_1_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.SETTL_RPTCURR1,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.SETTL_RPTCURR1,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,settlement_reporting_currency_2_code,settlement_reporting_currency_2_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.SETTL_RPTCURR2,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.SETTL_RPTCURR2,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,general_dimension_8_code,general_dimension_8_code,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.GD8,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.GD8,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,authorization_status_type_text,authorization_status_type_text,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.AUTH_STATUS_OID,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.AUTH_STATUS_OID,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,bank_account_description_text,bank_account_description_text,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.BANK_ACCT_DESC,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.BANK_ACCT_DESC,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,payment_comment_text,payment_comment_text,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.PAYMENT_COMMENT,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.PAYMENT_COMMENT,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,amount_retained_indicator,amount_retained_indicator,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.AMOUNT_RETAINED_FLAG_OID,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.AMOUNT_RETAINED_FLAG_OID,false,false,Null,VARCHAR(10)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,transaction_icp_indicator,transaction_icp_indicator,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.TRANSACTIONICPFLAG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.TRANSACTIONICPFLAG,false,false,Null,VARCHAR(10)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,is_procede_indicator,is_procede_indicator,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.is_procede,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.is_procede,false,false,Null,SMALLINT
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,medical_transaction_indicator,medical_transaction_indicator,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.Medical_Transaction,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.Medical_Transaction,false,false,Null,VARCHAR(10)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,medical_1099_indicator,medical_1099_indicator,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.MEDICAL_1099,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.MEDICAL_1099,false,false,Null,VARCHAR(10)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,attorney_1099_indicator,attorney_1099_indicator,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.ATTORNEY_1099,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.ATTORNEY_1099,false,false,Null,VARCHAR(10)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claimant_other_income_1099_indicator,claimant_other_income_1099_indicator,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLAIMANT_OTHER_INCOME_1099,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLAIMANT_OTHER_INCOME_1099,false,false,Null,VARCHAR(10)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,settlement_rate_of_exchange,settlement_rate_of_exchange,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.dSettROE,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.dSettROE,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,signed_line_percentage,signed_line_percentage,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.dSignedLinePC,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.dSignedLinePC,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_transaction_amount_usd,claim_transaction_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_TXN_AMT,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_TXN_AMT,false,false,Null,STRING(255)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_transaction_foreign_exchange_rate,claim_transaction_foreign_exchange_rate,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLAIMTRANSACTIONFXRATE,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLAIMTRANSACTIONFXRATE,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_incurred_total_amount_usd,claim_incurred_total_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_INC_TOT_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_INC_TOT_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_indemnity_reserve_fgu_amount_orig,claim_indemnity_reserve_fgu_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_IND_RES_FGU_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_IND_RES_FGU_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_reserve_fgu_amount_orig,claim_reserve_fgu_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_RES_FGU_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_RES_FGU_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_reserve_fgu_amount_usd,claim_reserve_fgu_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_RES_FGU_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_RES_FGU_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_indemnity_paid_amount_orig,claim_indemnity_paid_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_IND_PD_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_IND_PD_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_indemnity_reserve_fgu_amount_usd,claim_indemnity_reserve_fgu_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_IND_RES_FGU_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_IND_RES_FGU_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_indemnity_reserve_amount_orig,claim_indemnity_reserve_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_IND_RES_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_IND_RES_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_paid_gross_amount_usd,claim_paid_gross_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_PD_GR_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_PD_GR_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_paid_gross_amount_orig,claim_paid_gross_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_PD_GR_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_PD_GR_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_paid_amount_orig,claim_paid_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_PD_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_PD_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_subrogation_paid_amount_orig,claim_subrogation_paid_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SUB_PD_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SUB_PD_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_expense_paid_amount_orig,claim_expense_paid_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_EXP_PD_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_EXP_PD_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_incurred_total_amount_orig,claim_incurred_total_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_INC_TOT_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_INC_TOT_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_salvage_paid_amount_orig,claim_salvage_paid_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SAL_PD_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SAL_PD_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_legal_reserve_fgu_amount_orig,claim_legal_reserve_fgu_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LEG_RES_FGU_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LEG_RES_FGU_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_legal_reserve_fgu_amount_usd,claim_legal_reserve_fgu_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LEG_RES_FGU_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LEG_RES_FGU_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_legal_reserve_amount_orig,claim_legal_reserve_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LEG_RES_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LEG_RES_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_alae_reserve_fgu_amount_orig,claim_alae_reserve_fgu_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_ALAE_RES_FGU_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_ALAE_RES_FGU_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_expense_reserve_fgu_amount_orig,claim_expense_reserve_fgu_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_EXP_RES_FGU_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_EXP_RES_FGU_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_expense_reserve_fgu_amount_usd,claim_expense_reserve_fgu_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_EXP_RES_FGU_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_EXP_RES_FGU_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_expense_reserve_amount_orig,claim_expense_reserve_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_EXP_RES_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_EXP_RES_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_legal_paid_amount_orig,claim_legal_paid_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LEG_PD_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LEG_PD_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_litigation_paid_amount_orig,claim_litigation_paid_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LIT_PD_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LIT_PD_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_litigation_reserve_fgu_amount_orig,claim_litigation_reserve_fgu_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LIT_RES_FGU_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LIT_RES_FGU_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_litigation_reserve_fgu_amount_usd,claim_litigation_reserve_fgu_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LIT_RES_FGU_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LIT_RES_FGU_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_litigation_reserve_amount_orig,claim_litigation_reserve_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LIT_RES_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LIT_RES_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_salvage_reserve_fgu_amount_orig,claim_salvage_reserve_fgu_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SAL_RES_FGU_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SAL_RES_FGU_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_salvage_reserve_fgu_amount_usd,claim_salvage_reserve_fgu_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SAL_RES_FGU_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SAL_RES_FGU_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_subrogation_reserve_fgu_amount_usd,claim_subrogation_reserve_fgu_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SUB_RES_FGU_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SUB_RES_FGU_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_alae_reserve_fgu_amount_usd,claim_alae_reserve_fgu_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_ALAE_RES_FGU_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_ALAE_RES_FGU_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_alae_reserve_amount_orig,claim_alae_reserve_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_ALAE_RES_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_ALAE_RES_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_subrogation_reserve_amount_orig,claim_subrogation_reserve_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SUB_RES_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SUB_RES_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_incurred_total_gross_amount_orig,claim_incurred_total_gross_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_INC_TOT_GRS_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_INC_TOT_GRS_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_incurred_total_gross_amount_usd,claim_incurred_total_gross_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_INC_TOT_GRS_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_INC_TOT_GRS_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_defense_paid_amount_orig,claim_defense_paid_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_DEF_PD_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_DEF_PD_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,movement_amount_usd,movement_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.MVMT_AMT,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.MVMT_AMT,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_defense_reserve_fgu_amount_orig,claim_defense_reserve_fgu_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_DEF_RES_FGU_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_DEF_RES_FGU_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_defense_reserve_fgu_amount_usd,claim_defense_reserve_fgu_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_DEF_RES_FGU_USD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_DEF_RES_FGU_USD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_defense_reserve_amount_orig,claim_defense_reserve_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_DEF_RES_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_DEF_RES_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_subrogation_reserve_fgu_amount_orig,claim_subrogation_reserve_fgu_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SUB_RES_FGU_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SUB_RES_FGU_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_salvage_reserve_amount_orig,claim_salvage_reserve_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SAL_RES_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SAL_RES_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_alae_paid_amount_orig,claim_alae_paid_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_ALAE_PD_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_ALAE_PD_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,defense_deductible_paid_amount_usd,defense_deductible_paid_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.DEF_DED_PD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.DEF_DED_PD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,indemnity_deductible_paid_amount_usd,indemnity_deductible_paid_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.IND_DED_PD,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.IND_DED_PD,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,defense_deductible_reserve_amount_usd,defense_deductible_reserve_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.DEF_DED_RES,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.DEF_DED_RES,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,indemnity_deductible_reserve_amount_usd,indemnity_deductible_reserve_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.IND_DED_RES,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.IND_DED_RES,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,defense_deductible_recovered_amount_usd,defense_deductible_recovered_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.DEF_DED_RECOVERED,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.DEF_DED_RECOVERED,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,indemnity_deductible_recovered_amount_usd,indemnity_deductible_recovered_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.IND_DED_RECOVERED,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.IND_DED_RECOVERED,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,loss_adjustment_expense_recovered_amount_usd,loss_adjustment_expense_recovered_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.LAE_RECOVERED,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.LAE_RECOVERED,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,indemnity_other_recovered_amount_usd,indemnity_other_recovered_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.IND_OTHER_RECOVERED,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.IND_OTHER_RECOVERED,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,defense_deductible_paid_amount_orig,defense_deductible_paid_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.DEF_DED_PD_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.DEF_DED_PD_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,indemnity_deductible_paid_amount_orig,indemnity_deductible_paid_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.IND_DED_PD_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.IND_DED_PD_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,defense_deductible_reserve_amount_orig,defense_deductible_reserve_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.DEF_DED_RES_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.DEF_DED_RES_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,indemnity_deductible_reserve_amount_orig,indemnity_deductible_reserve_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.IND_DED_RES_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.IND_DED_RES_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,defense_deductible_recovered_amount_orig,defense_deductible_recovered_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.DEF_DED_RECOVERED_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.DEF_DED_RECOVERED_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,indemnity_deductible_recovered_amount_orig,indemnity_deductible_recovered_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.IND_DED_RECOVERED_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.IND_DED_RECOVERED_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,loss_adjustment_expense_recovered_amount_orig,loss_adjustment_expense_recovered_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.LAE_RECOVERED_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.LAE_RECOVERED_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,indemnity_other_recovered_amount_orig,indemnity_other_recovered_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.IND_OTHER_RECOVERED_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.IND_OTHER_RECOVERED_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,general_ledger_monthly_rate,general_ledger_monthly_rate,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.GL_monthly_rate,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.GL_monthly_rate,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_reserve_usd_general_ledger_monthly_amount_usd,claim_reserve_usd_general_ledger_monthly_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.clm_res_usd_GL_monthly,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.clm_res_usd_GL_monthly,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_defense_reserve_calculated_amount_usd,claim_defense_reserve_calculated_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_DEF_RES_USD_CALC,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_DEF_RES_USD_CALC,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_indemnity_reserve_calculated_amount_usd,claim_indemnity_reserve_calculated_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_IND_RES_USD_CALC,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_IND_RES_USD_CALC,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_legal_reserve_calculated_amount_usd,claim_legal_reserve_calculated_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LEG_RES_USD_CALC,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LEG_RES_USD_CALC,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_litigation_reserve_calculated_amount_usd,claim_litigation_reserve_calculated_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LIT_RES_USD_CALC,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_LIT_RES_USD_CALC,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_paid_settlement_amount_usd,claim_paid_settlement_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_PD_SETT,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_PD_SETT,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_reserve_amount_orig,claim_reserve_amount_orig,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_RES_ORIG,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_RES_ORIG,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_reserve_calculated_amount_usd,claim_reserve_calculated_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_RES_USD_CALC,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_RES_USD_CALC,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_salvage_reserve_calculated_amount_usd,claim_salvage_reserve_calculated_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SAL_RES_USD_CALC,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SAL_RES_USD_CALC,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_subrogation_reserve_calculated_amount_usd,claim_subrogation_reserve_calculated_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SUB_RES_USD_CALC,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_SUB_RES_USD_CALC,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,movement_settlement_amount_usd,movement_settlement_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.MVMT_AMT_SETT,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.MVMT_AMT_SETT,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_alae_reserve_calculated_amount_usd,claim_alae_reserve_calculated_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_ALAE_RES_USD_CALC,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_ALAE_RES_USD_CALC,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,claim_expense_reserve_calculated_amount_usd,claim_expense_reserve_calculated_amount_usd,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_EXP_RES_USD_CALC,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.CLM_EXP_RES_USD_CALC,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,solvency_ii_regulatory_key,solvency_ii_regulatory_key,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.solvency_II_regulatory_key,EDW_PREPROD.WHSUSR.RS_DIRECT_CLAIM.solvency_II_regulatory_key,false,false,Null,BIGINT
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,derived_gross_loss_paid_amount_usd,derived_gross_loss_paid_amount_usd,aw_qa.reporting.claims_accounting.derived_gross_loss_paid_amount_usd,aw_qa.reporting.claims_accounting.derived_gross_loss_paid_amount_usd,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,derived_gross_loss_incurred_amount_usd,derived_gross_loss_incurred_amount_usd,aw_qa.reporting.claims_accounting.derived_gross_loss_incurred_amount_usd,aw_qa.reporting.claims_accounting.derived_gross_loss_incurred_amount_usd,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,gross_indemnity_incurred,gross_indemnity_incurred,aw_qa.reporting.claims_accounting.gross_indemnity_incurred,aw_qa.reporting.claims_accounting.gross_indemnity_incurred,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,gross_alae_incurred,gross_alae_incurred,aw_qa.reporting.claims_accounting.gross_alae_incurred,aw_qa.reporting.claims_accounting.gross_alae_incurred,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,gross_defense_incurred,gross_defense_incurred,aw_qa.reporting.claims_accounting.gross_defense_incurred,aw_qa.reporting.claims_accounting.gross_defense_incurred,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,gross_expense_incurred,gross_expense_incurred,aw_qa.reporting.claims_accounting.gross_expense_incurred,aw_qa.reporting.claims_accounting.gross_expense_incurred,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,gross_legal_incurred,gross_legal_incurred,aw_qa.reporting.claims_accounting.gross_legal_incurred,aw_qa.reporting.claims_accounting.gross_legal_incurred,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,gross_litigation_incurred,gross_litigation_incurred,aw_qa.reporting.claims_accounting.gross_litigation_incurred,aw_qa.reporting.claims_accounting.gross_litigation_incurred,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,gross_salvage_incurred,gross_salvage_incurred,aw_qa.reporting.claims_accounting.gross_salvage_incurred,aw_qa.reporting.claims_accounting.gross_salvage_incurred,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,gross_subrogation_incurred,gross_subrogation_incurred,aw_qa.reporting.claims_accounting.gross_subrogation_incurred,aw_qa.reporting.claims_accounting.gross_subrogation_incurred,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,net_loss_alae_paid_usd,net_loss_alae_paid_usd,aw_qa.reporting.claims_accounting.net_loss_alae_paid_usd,aw_qa.reporting.claims_accounting.net_loss_alae_paid_usd,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,net_loss_alae_reserve_usd,net_loss_alae_reserve_usd,aw_qa.reporting.claims_accounting.net_loss_alae_reserve_usd,aw_qa.reporting.claims_accounting.net_loss_alae_reserve_usd,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,net_loss_alae_incurred_usd,net_loss_alae_incurred_usd,aw_qa.reporting.claims_accounting.net_loss_alae_incurred_usd,aw_qa.reporting.claims_accounting.net_loss_alae_incurred_usd,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,derived_gross_loss_reserve_amount_usd,derived_gross_loss_reserve_amount_usd,aw_qa.reporting.claims_accounting.derived_gross_loss_reserve_amount_usd,aw_qa.reporting.claims_accounting.derived_gross_loss_reserve_amount_usd,false,false,Null,"DECIMAL(38,4)"
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,indemnity_transaction_count,indemnity_transaction_count,aw_qa.reporting.claims_accounting.indemnity_transaction_count,aw_qa.reporting.claims_accounting.indemnity_transaction_count,false,false,Null,BIGINT
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,defense_transaction_count,defense_transaction_count,aw_qa.reporting.claims_accounting.defense_transaction_count,aw_qa.reporting.claims_accounting.defense_transaction_count,false,false,Null,BIGINT
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,alae_transaction_count,alae_transaction_count,aw_qa.reporting.claims_accounting.alae_transaction_count,aw_qa.reporting.claims_accounting.alae_transaction_count,false,false,Null,BIGINT
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,legal_transaction_count,legal_transaction_count,aw_qa.reporting.claims_accounting.legal_transaction_count,aw_qa.reporting.claims_accounting.legal_transaction_count,false,false,Null,BIGINT
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,litigation_transaction_count,litigation_transaction_count,aw_qa.reporting.claims_accounting.litigation_transaction_count,aw_qa.reporting.claims_accounting.litigation_transaction_count,false,false,Null,BIGINT
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,subrogation_transaction_count,subrogation_transaction_count,aw_qa.reporting.claims_accounting.subrogation_transaction_count,aw_qa.reporting.claims_accounting.subrogation_transaction_count,false,false,Null,BIGINT
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,salvage_transaction_count,salvage_transaction_count,aw_qa.reporting.claims_accounting.salvage_transaction_count,aw_qa.reporting.claims_accounting.salvage_transaction_count,false,false,Null,BIGINT
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,expense_transaction_count,expense_transaction_count,aw_qa.reporting.claims_accounting.expense_transaction_count,aw_qa.reporting.claims_accounting.expense_transaction_count,false,false,Null,BIGINT
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,derived_payee_name,derived_payee_name,aw_qa.reporting.claims_accounting.derived_payee_name,aw_qa.reporting.claims_accounting.derived_payee_name,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,bermuda_law_firm_eligibility_and_grouping,bermuda_law_firm_eligibility_and_grouping,aw_qa.reporting.claims_accounting.bermuda_law_firm_eligibility_and_grouping,aw_qa.reporting.claims_accounting.bermuda_law_firm_eligibility_and_grouping,false,false,Null,STRING()
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_TRANSACTION,CLAIM_TRANSACTION,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,claim_team_assignment_key,claim_team_assignment_key,,,false,true,Not Null,BIGINT
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,claim_team_key,claim_team_key,,,true,false,Not Null,BIGINT
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,claim_handler_key,claim_handler_key,,,true,false,Not Null,BIGINT
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,top_manager_name,top_manager_name,aw_qa.default.claim_team_assignment.top_manager_name,aw_qa.default.claim_team_assignment.top_manager_name,false,false,Null,STRING()
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,handler_name,handler_name,aw_qa.default.claim_team_assignment.handler_name,aw_qa.default.claim_team_assignment.handler_name,false,false,Null,STRING()
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,claim_team_name,claim_team_name,aw_qa.default.claim_team_assignment.claim_team_name,aw_qa.default.claim_team_assignment.claim_team_name,false,false,Null,STRING()
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,email,email,aw_qa.default.claim_team_assignment.email,aw_qa.default.claim_team_assignment.email,false,false,Null,STRING()
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,claim_area_handled_name,claim_area_handled_name,aw_qa.default.claim_team_assignment.claim_area_handled_name,aw_qa.default.claim_team_assignment.claim_area_handled_name,false,false,Null,STRING()
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,region_name,region_name,aw_qa.default.claim_team_assignment.region_name,aw_qa.default.claim_team_assignment.region_name,false,false,Null,STRING()
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,third_party_administrator_name,third_party_administrator_name,aw_qa.default.claim_team_assignment.third_party_administrator_name,aw_qa.default.claim_team_assignment.third_party_administrator_name,false,false,Null,STRING()
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,level_number,level_number,aw_qa.default.claim_team_assignment.level,aw_qa.default.claim_team_assignment.level,false,false,Null,STRING()
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,is_human_code,is_human_code,aw_qa.default.claim_team_assignment.is_human_code,aw_qa.default.claim_team_assignment.is_human_code,false,false,Null,STRING()
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,relation_path_text,relation_path_text,aw_qa.default.claim_team_assignment.path,aw_qa.default.claim_team_assignment.path,false,false,Null,STRING()
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,record_update_user_identifier,record_update_user_identifier,,,false,false,Null,VARCHAR(20)
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_TEAM_ASSIGNMENT,CLAIM_TEAM_ASSIGNMENT,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,claim_subrogation_key,claim_subrogation_key,,,false,true,Not Null,BIGINT
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,subclaim_key,subclaim_key,edw_preprod.dbo.map_claim_edw_No_Match,edw_preprod.dbo.map_claim_edw_No_Match,true,false,Not Null,BIGINT
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,subrogation_status_code,subrogation_status_code,[ebao-singapore].[awapac_claim].[t_clm_subrogation].status,[ebao-singapore].[awapac_claim].[t_clm_subrogation].status,false,false,Null,STRING()
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,total_amount,total_amount,[ebao-singapore].[awapac_claim].[t_clm_subrogation].total_amount,[ebao-singapore].[awapac_claim].[t_clm_subrogation].total_amount,false,false,Null,STRING()
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,remark_text,remark_text,[ebao-singapore].[awapac_claim].[t_clm_subrogation].remark,[ebao-singapore].[awapac_claim].[t_clm_subrogation].remark,false,false,Null,STRING()
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,currency_code,currency_code,[ebao-singapore].[awapac_claim].[t_clm_subrogation].currency_code,[ebao-singapore].[awapac_claim].[t_clm_subrogation].currency_code,false,false,Null,STRING()
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,submitter_identifier,submitter_identifier,[ebao-singapore].[awapac_claim].[t_clm_subrogation].submitter,[ebao-singapore].[awapac_claim].[t_clm_subrogation].submitter,false,false,Null,STRING()
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,submit_date,submit_date,[ebao-singapore].[awapac_claim].[t_clm_subrogation].submit_date,[ebao-singapore].[awapac_claim].[t_clm_subrogation].submit_date,false,false,Null,DATE
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,approver_identifier,approver_identifier,[ebao-singapore].[awapac_claim].[t_clm_subrogation].approver,[ebao-singapore].[awapac_claim].[t_clm_subrogation].approver,false,false,Null,BIGINT
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,approver_date,approver_date,[ebao-singapore].[awapac_claim].[t_clm_subrogation].approver_date,[ebao-singapore].[awapac_claim].[t_clm_subrogation].approver_date,false,false,Null,STRING
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,record_insert_timestamp,record_insert_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,record_update_timestamp,record_update_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,record_insert_user_identifier,record_insert_user_identifier,,,false,false,Null,VARCHAR(20)
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,record_update_user_identifier,record_update_user_identifier,,,false,false,Null,VARCHAR(20)
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,is_deleted_indicator,is_deleted_indicator,,,false,false,Null,VARCHAR(10)
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,pipeline_run_identifier,pipeline_run_identifier,,,false,false,Null,VARCHAR(255)
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,record_hashkey,record_hashkey,,,false,false,Null,BIGINT
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,pipeline_run_start_timestamp,pipeline_run_start_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
+CLAIM_SUBROGATION,CLAIM_SUBROGATION,pipeline_run_end_timestamp,pipeline_run_end_timestamp,,,false,false,Null,TIMESTAMP_NTZ(9)
