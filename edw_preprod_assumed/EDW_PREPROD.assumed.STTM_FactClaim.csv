@@ -1,130 +1,52 @@
-Target_Table,Target_Column,Source_Object,Source_Expression_or_Column,Transformation,Notes
-EDW_PREPROD.assumed.FactClaim,ClaimLoadWideID,Temp table #ClaimLoadWide,IDENTITY(),Identity staging key,Staging-only surrogate; not final target fact key
-EDW_PREPROD.assumed.FactClaim,TREATY_NBR,#BaseKey,BK.Treaty_NBR,TRIM(CAST(ad.trty_no AS VARCHAR(5))) ,Derived from SRC_TIRS_DB.dbo.acct_doc + trty_master
-EDW_PREPROD.assumed.FactClaim,UNDERWRITING_YEAR,#BaseKey,BK.UNDERWRITING_YEAR,TRIM(CAST(ad.und_yr AS VARCHAR(4))),Derived from treaty underwriting year
-EDW_PREPROD.assumed.FactClaim,Ceded_CONTRACT_NBR,#BaseKey,BK.Ceded_CONTRACT_NBR,TRIM(CAST(ceded_tm.trty_no AS CHAR(5))) + TRIM(CAST(ceded_tm.und_yr AS CHAR(4))),Ceded treaty contract number
-EDW_PREPROD.assumed.FactClaim,CONTRACT_NBR,#BaseKey,BK.CONTRACT_NBR,TRIM(CAST(ad.trty_no AS VARCHAR(5))) + TRIM(CAST(ad.und_yr AS VARCHAR(4))),Primary contract number
-EDW_PREPROD.assumed.FactClaim,SourceSystemKey,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,10000000000 + pc.byline_key,CAST(... AS BIGINT),Document-origin key
-EDW_PREPROD.assumed.FactClaim,SourceSystemKey,EDW_Staging.assumed.TIRSClaimLossPaidOSLR / claim transaction feeds,20000000000 + p.trans_key,CAST(... AS BIGINT),Transaction-origin key
-EDW_PREPROD.assumed.FactClaim,TransactionTypeCode,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.doc_type_cd,CAST(... AS VARCHAR(10)),Document type code
-EDW_PREPROD.assumed.FactClaim,TransactionTypeCode,EDW_Staging.assumed.TIRSClaimLossPaidOSLR,p.trans_cd,CAST(... AS VARCHAR(10)),Claim transaction code
-EDW_PREPROD.assumed.FactClaim,TransactionTypeCategory,CLM_LOAD literals,"'Document Type' or 'Claim Transaction Type'",Literal assignment,Category for transaction type
-EDW_PREPROD.assumed.FactClaim,DueDate,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.due_dt,Direct mapping,Document due date
-EDW_PREPROD.assumed.FactClaim,DueDate,EDW_Staging.assumed.TIRSClaimLossPaidOSLR,p.entry_dt,Direct mapping,Claim transaction entry date
-EDW_PREPROD.assumed.FactClaim,acct_from_dt,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.acct_from_dt,Direct mapping,
-EDW_PREPROD.assumed.FactClaim,acct_to_dt,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.acct_to_dt,Direct mapping,
-EDW_PREPROD.assumed.FactClaim,doc_key,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.doc_key,Direct mapping,
-EDW_PREPROD.assumed.FactClaim,ORIGCURR_CD,#BaseKey,BK.ORIGCURR_CD,TRIM(cn.curr_iso_cd),Original currency code
-EDW_PREPROD.assumed.FactClaim,TIRS_ORIG_CURR_CD,#BaseKey,BK.TIRS_ORIG_CURR_CD,TRIM(ad.curr_cd),Source TIRS currency code
-EDW_PREPROD.assumed.FactClaim,SETTL_CURR_CD,Various staging feeds,Settl currency columns,Varies by row source,Settlement currency if present
-EDW_PREPROD.assumed.FactClaim,TIRS_ORIG_CURR_NAME,#BaseKey,BK.TIRS_ORIG_CURR_NAME,TRIM(cn.curr_nm),Currency name
-EDW_PREPROD.assumed.FactClaim,lob_name,#BaseKey,BK.lob_name,TRIM(lob.desc_txt),Line of business name from xrf_lob_cds
-EDW_PREPROD.assumed.FactClaim,AccidentYear,#BaseKey,BK.AccidentYear,TRIM(CAST(ay.accidentyear AS VARCHAR(4))),Derived from TIRS contract earning rates
-EDW_PREPROD.assumed.FactClaim,aslob,#BaseKey,BK.aslob,TRIM(AM.ASLOB),ASLOB mapping result
-EDW_PREPROD.assumed.FactClaim,TIRS_UW_ASSM_CEDED_NAME,#BaseKey,CASE BK.assumed_ceded_flg WHEN 'C' THEN 'Ceded' WHEN 'A' THEN 'Assumed' END,CASE expression,Textual Assumed/Ceded label
-EDW_PREPROD.assumed.FactClaim,reg_date,#BaseKey,BK.reg_date,COALESCE(ad.reg_dt, DATEADD(MONTH, DATEDIFF(MONTH, 0, ad.create_dt), 0)),Used for accounting period assignment
-EDW_PREPROD.assumed.FactClaim,Claim_NBR,EDW_Staging.assumed.TIRSClaimLossPaidOSLR,p.Claim_NBR,'N/A' for non-claim rows,Actual claim number if available
-EDW_PREPROD.assumed.FactClaim,TIRS_CLM_CD,EDW_Staging.assumed.TIRSClaimLossPaidOSLR,p.TIRS_CLM_CD,'N/A' for non-claim rows,Claim code used for CatCode mapping
-EDW_PREPROD.assumed.FactClaim,CatCode,EDW_PREPROD.dbo.TIRS_CATCODE_HISTORY / temp #L04,H.CatCode / #L04.CatCode,Joined via TIRS_CLM_CD and #CatCodeRevisionExCatCodeCatKey,Derived through catcode history pruning
-EDW_PREPROD.assumed.FactClaim,CAT_KEY,EDW_PREPROD.dbo.TIRS_CATCODE_HISTORY / temp #L04,H.CAT_KEY,Joined via TIRS_CLM_CD and #L04,Cat code history key
-EDW_PREPROD.assumed.FactClaim,solvency_II_regulatory_key,EDW_PREPROD.dbo.solvency_II_regulatory_etl,solII.solvency_II_regulatory_key,Join on branch/product/LOB/ASLOB/treaty flags,Regulatory mapping table
-EDW_PREPROD.assumed.FactClaim,CLAIMLOSSDATE,EDW_Staging.assumed.TIRSClaimLossPaidOSLR,p.CLAIMLOSSDATE,Direct mapping,Claim loss date
-EDW_PREPROD.assumed.FactClaim,bill_co_br_key,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.bill_co_br_key,Direct mapping,
-EDW_PREPROD.assumed.FactClaim,bill_co_br_key,EDW_Staging.assumed.TIRSOSLossEarnedAccidentYear,os.bill_co_br_key,Direct mapping,
-EDW_PREPROD.assumed.FactClaim,Summable_LOSS_PAID,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.Summable_LOSS_PAID,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE pc.Summable_LOSS_PAID END,0),Assumed-only sums for non-ceded directions
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_LOSS_PAID_USD,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_LOSS_PAID_USD,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE pc.SUMMABLE_LOSS_PAID_USD END,0),USD equivalent
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_LOSS_EXP_PAID,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_LOSS_EXP_PAID,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE pc.SUMMABLE_LOSS_EXP_PAID END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_LOSS_EXP_PAID_USD,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_LOSS_EXP_PAID_USD,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE pc.SUMMABLE_LOSS_EXP_PAID_USD END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_LAE,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_LAE,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE pc.SUMMABLE_LAE END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_LAE_USD,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_LAE_USD,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE pc.SUMMABLE_LAE_USD END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_CASH_LOSS_ADV_AMT,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_CASH_LOSS_ADV_AMT,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE pc.SUMMABLE_CASH_LOSS_ADV_AMT END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_CASH_LOSS_ADV_AMT_USD,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_CASH_LOSS_ADV_AMT_USD,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE pc.SUMMABLE_CASH_LOSS_ADV_AMT_USD END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_CASH_LOSS_REFUND,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_CASH_LOSS_REFUND,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE pc.SUMMABLE_CASH_LOSS_REFUND END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_CASH_LOSS_REFUND_USD,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_CASH_LOSS_REFUND_USD,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE pc.SUMMABLE_CASH_LOSS_REFUND_USD END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_funds_released_losses,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_funds_released_losses,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE pc.SUMMABLE_funds_released_losses END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_funds_released_losses_USD,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_funds_released_losses_USD,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE pc.SUMMABLE_funds_released_losses_USD END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_reinstatement_premium,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_reinstatement_premium,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE pc.SUMMABLE_reinstatement_premium END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_reinstatement_premium_USD,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_reinstatement_premium_USD,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE pc.SUMMABLE_reinstatement_premium_USD END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_OS_LOSS,EDW_Staging.assumed.TIRSOSLossEarnedAccidentYear,os.SUMMABLE_OS_LOSS,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE os.SUMMABLE_OS_LOSS END,0),OS loss values
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_OS_LOSS_EXP,EDW_Staging.assumed.TIRSOSLossEarnedAccidentYear,os.SUMMABLE_OS_LOSS_EXP,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE os.SUMMABLE_OS_LOSS_EXP END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_OS_LOSS_USD,EDW_Staging.assumed.TIRSOSLossEarnedAccidentYear,os.SUMMABLE_OS_LOSS_USD,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE os.SUMMABLE_OS_LOSS_USD END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_OS_LOSS_EXP_USD,EDW_Staging.assumed.TIRSOSLossEarnedAccidentYear,os.SUMMABLE_OS_LOSS_EXP_USD,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE os.SUMMABLE_OS_LOSS_EXP_USD END,0),
-EDW_PREPROD.assumed.FactClaim,Summable_Ceded_LOSS_PAID,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.Summable_LOSS_PAID,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN pc.Summable_LOSS_PAID ELSE 0 END,0),Ceded side of sum
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_Ceded_LOSS_PAID_USD,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_LOSS_PAID_USD,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN pc.SUMMABLE_LOSS_PAID_USD ELSE 0 END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_Ceded_LOSS_EXP_PAID,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_LOSS_EXP_PAID,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN pc.SUMMABLE_LOSS_EXP_PAID ELSE 0 END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_Ceded_LOSS_EXP_PAID_USD,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_LOSS_EXP_PAID_USD,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN pc.SUMMABLE_LOSS_EXP_PAID_USD ELSE 0 END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_Ceded_LAE,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_LAE,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN pc.SUMMABLE_LAE ELSE 0 END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_Ceded_LAE_USD,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_LAE_USD,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN pc.SUMMABLE_LAE_USD ELSE 0 END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_Ceded_CASH_LOSS_ADV_AMT,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_CASH_LOSS_ADV_AMT,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN pc.SUMMABLE_CASH_LOSS_ADV_AMT ELSE 0 END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_Ceded_CASH_LOSS_ADV_AMT_USD,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_CASH_LOSS_ADV_AMT_USD,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN pc.SUMMABLE_CASH_LOSS_ADV_AMT_USD ELSE 0 END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_Ceded_CASH_LOSS_REFUND,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_CASH_LOSS_REFUND,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN pc.SUMMABLE_CASH_LOSS_REFUND ELSE 0 END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_Ceded_CASH_LOSS_REFUND_USD,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_CASH_LOSS_REFUND_USD,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN pc.SUMMABLE_CASH_LOSS_REFUND_USD ELSE 0 END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_Ceded_funds_released_losses,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_funds_released_losses,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN pc.SUMMABLE_funds_released_losses ELSE 0 END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_Ceded_funds_released_losses_USD,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_funds_released_losses_USD,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN pc.SUMMABLE_funds_released_losses_USD ELSE 0 END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_Ceded_OS_LOSS,EDW_Staging.assumed.TIRSOSLossEarnedAccidentYear,os.SUMMABLE_OS_LOSS,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN os.SUMMABLE_OS_LOSS ELSE 0 END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_Ceded_OS_LOSS_EXP,EDW_Staging.assumed.TIRSOSLossEarnedAccidentYear,os.SUMMABLE_OS_LOSS_EXP,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN os.SUMMABLE_OS_LOSS_EXP ELSE 0 END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_Ceded_OS_LOSS_USD,EDW_Staging.assumed.TIRSOSLossEarnedAccidentYear,os.SUMMABLE_OS_LOSS_USD,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN os.SUMMABLE_OS_LOSS_USD ELSE 0 END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_Ceded_OS_LOSS_EXP_USD,EDW_Staging.assumed.TIRSOSLossEarnedAccidentYear,os.SUMMABLE_OS_LOSS_EXP_USD,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN os.SUMMABLE_OS_LOSS_EXP_USD ELSE 0 END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_Ceded_reinstatement_premium,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_reinstatement_premium,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN pc.SUMMABLE_reinstatement_premium ELSE 0 END,0),
-EDW_PREPROD.assumed.FactClaim,SUMMABLE_Ceded_reinstatement_premium_USD,EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear,pc.SUMMABLE_reinstatement_premium_USD,ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN pc.SUMMABLE_reinstatement_premium_USD ELSE 0 END,0),
-EDW_PREPROD.assumed.FactClaim,FIRVIBNRBeg,Temp staging fields,0,Literal 0,Placeholder for FIRVIBNR beginning balance
-EDW_PREPROD.assumed.FactClaim,CededFIRVIBNRBeg,Temp staging fields,0,Literal 0,Placeholder for ceded starting balance
-EDW_PREPROD.assumed.FactClaim,FIRVIBNREnd,Temp staging fields,0,Literal 0,Placeholder for FIRVIBNR end balance
-EDW_PREPROD.assumed.FactClaim,CededFIRVIBNREnd,Temp staging fields,0,Literal 0,Placeholder for ceded end balance
-EDW_PREPROD.assumed.FactClaim,FIRVIBNRBegUSD,Temp staging fields,0,Literal 0,Placeholder
-EDW_PREPROD.assumed.FactClaim,CededFIRVIBNRBegUSD,Temp staging fields,0,Literal 0,Placeholder
-EDW_PREPROD.assumed.FactClaim,FIRVIBNREndUSD,Temp staging fields,0,Literal 0,Placeholder
-EDW_PREPROD.assumed.FactClaim,CededFIRVIBNREndUSD,Temp staging fields,0,Literal 0,Placeholder
-EDW_PREPROD.assumed.FactClaim,Source,CLM_LOAD literal,"CASE/row source sets 'TIRS' or 'OPENBOX' etc",Literal assignment,Source system tag
-EDW_PREPROD.assumed.FactClaim,SourceID,Computed column,CASE WHEN Source = 'TIRS' THEN 4 WHEN Source = 'OPENBOX' THEN 1 ELSE NULL END,Computed persisted column,Source system ID
-EDW_PREPROD.assumed.FactClaim,adjustmenttype,Various staging feeds,pc.adjustmenttype / p.adjustmenttype,Direct or 'N/A' fallback,Adjustment type classification
-EDW_PREPROD.assumed.FactClaim,financial_lob,Varies,Derived from source / T-code tables,Direct,Financial LOB classification
-EDW_PREPROD.assumed.FactClaim,T7_CODE,EDW_PREPROD.dbo.T_Code_History,Derived via T-Code revision tables,Joined from T-code history,Multi-field T-code classification
-EDW_PREPROD.assumed.FactClaim,T8_CODE,EDW_PREPROD.dbo.T_Code_History,Derived via T-Code revision tables,Joined from T-code history,
-EDW_PREPROD.assumed.FactClaim,T9_CODE,EDW_PREPROD.dbo.T_Code_History,Derived via T-Code revision tables,Joined from T-code history,
-EDW_PREPROD.assumed.FactClaim,InsurerCode,T-code / source data,Derived from source mapping,Direct,Insurer code
-EDW_PREPROD.assumed.FactClaim,CLMS_PROCSS_CLM_DEPT,EDW_PREPROD.dbo.T_Code_History,tch.CLMS_PROCSS_CLM_DEPT,Mapping from T-code history,Claim processing dept code
-EDW_PREPROD.assumed.FactClaim,ICP_CEDED_FLG,EDW_PREPROD.dbo.T_Code_History,tch.ICP_CEDED_FLG,Mapping from T-code history,Intercompany ceded flag
-EDW_PREPROD.assumed.FactClaim,RPT_OFF_NAME,EDW_PREPROD.dbo.T_Code_History,tch.RPT_OFF_NAME,Mapping from T-code history,Reporting office name
-EDW_PREPROD.assumed.FactClaim,ActuarialLob,EDW_PREPROD.dbo.T_Code_History,tch.ActuarialLob,Mapping from T-code history,Actuarial line of business
-EDW_PREPROD.assumed.FactClaim,MBU,EDW_PREPROD.dbo.T_Code_History,tch.MBU,Mapping from T-code history,MBU code
-EDW_PREPROD.assumed.FactClaim,L01,EDW_PREPROD.dbo.T_Code_History,tch.L01,Mapping from T-code history,Dimension-level code 1
-EDW_PREPROD.assumed.FactClaim,L02,EDW_PREPROD.dbo.T_Code_History,tch.L02,Mapping from T-code history,
-EDW_PREPROD.assumed.FactClaim,L03,EDW_PREPROD.dbo.T_Code_History,tch.L03,Mapping from T-code history,
-EDW_PREPROD.assumed.FactClaim,L04,EDW_PREPROD.dbo.TIRS_CATCODE_HISTORY / #L04,H.L04 / #L04.L04,Derived from catcode history,Used for accident year and dimension mapping
-EDW_PREPROD.assumed.FactClaim,L06,EDW_PREPROD.dbo.T_Code_History,tch.L06,Mapping from T-code history,
-EDW_PREPROD.assumed.FactClaim,L07,EDW_PREPROD.dbo.T_Code_History,tch.L07,Mapping from T-code history,
-EDW_PREPROD.assumed.FactClaim,L10,EDW_PREPROD.dbo.T_Code_History,tch.L10,Mapping from T-code history,
-EDW_PREPROD.assumed.FactClaim,GD1,EDW_PREPROD.dbo.T_Code_History,tch.GD1,Mapping from T-code history,
-EDW_PREPROD.assumed.FactClaim,RPTCURR1_CD,EDW_PREPROD.dbo.T_Code_History,tch.RPTCURR1_CD,Mapping from T-code history,
-EDW_PREPROD.assumed.FactClaim,RPTCURR2_CD,EDW_PREPROD.dbo.T_Code_History,tch.RPTCURR2_CD,Mapping from T-code history,
-EDW_PREPROD.assumed.FactClaim,RPTCURR1,EDW_PREPROD.dbo.T_Code_History,tch.RPTCURR1,CAST(... AS FLOAT),Reporting currency 1 rate
-EDW_PREPROD.assumed.FactClaim,RPTCURR2,EDW_PREPROD.dbo.T_Code_History,tch.RPTCURR2,CAST(... AS FLOAT),Reporting currency 2 rate
-EDW_PREPROD.assumed.FactClaim,SETTL_RPTCURR1,EDW_PREPROD.dbo.T_Code_History,tch.SETTL_RPTCURR1,CAST(... AS FLOAT),Settlement reporting currency 1 rate
-EDW_PREPROD.assumed.FactClaim,SETTL_RPTCURR2,EDW_PREPROD.dbo.T_Code_History,tch.SETTL_RPTCURR2,CAST(... AS FLOAT),Settlement reporting currency 2 rate
-EDW_PREPROD.assumed.FactClaim,Summable_SETTL_LOSS_PAID,EDW_PREPROD.dbo.T_Code_History / settlement processing,Derived from settlement tables,Direct,Settled loss paid values
-EDW_PREPROD.assumed.FactClaim,Summable_SETTL_LOSS_PAID_USD,EDW_PREPROD.dbo.T_Code_History / settlement processing,Derived from settlement tables,Direct,USD settled loss paid
-EDW_PREPROD.assumed.FactClaim,Summable_SETTL_LAE,EDW_PREPROD.dbo.T_Code_History / settlement processing,Derived from settlement tables,Direct,Settlement LAE
-EDW_PREPROD.assumed.FactClaim,Summable_SETTL_LAE_USD,EDW_PREPROD.dbo.T_Code_History / settlement processing,Derived from settlement tables,Direct,USD settlement LAE
-EDW_PREPROD.assumed.FactClaim,DimContractID,EDW_PREPROD.assumed.DimContract,dc.DimContractID,Lookup by CONTRACT_NBR + active date + fallback IDs,Dimension foreign key to contract
-EDW_PREPROD.assumed.FactClaim,DimClaimTransactionID,EDW_PREPROD.assumed.DimClaimTransaction,dact.DimClaimTransactionID,Lookup by transaction code,Dimension foreign key to claim transaction
-EDW_PREPROD.assumed.FactClaim,Ceded_DimContractID,EDW_PREPROD.assumed.DimContract,dc.DimContractID,Lookup by Ceded_CONTRACT_NBR,Dimension foreign key to ceded contract
-EDW_PREPROD.assumed.FactClaim,Intended_DimAccountingPeriodID,EDW_PREPROD.assumed.DimAccountingPeriod,dap.DimAccountingPeriodID,From #ActualAccountingPeriodOverride + reg_date,Accounting period rollback/override target
-EDW_PREPROD.assumed.FactClaim,DimAccidentYearID,EDW_PREPROD.assumed.DimAccidentYear,ay.DimAccidentYearID,Lookup on L04 / accident year + fallback IDs,Accident year FK
-EDW_PREPROD.assumed.FactClaim,Intended_DimAccountingID,EDW_PREPROD.assumed.DimAccounting,da.DimAccountingID,Lookup by reporting context and fallback,Accounting dimension target
-EDW_PREPROD.assumed.FactClaim,DimAccountingID,EDW_PREPROD.assumed.DimAccounting,da.DimAccountingID,Lookup by reporting context,Final accounting dimension
-EDW_PREPROD.assumed.FactClaim,DimAdjustmentTypeID,EDW_PREPROD.assumed.DimAdjustmentType,dat.DimAdjustmentTypeID,Lookup by adjustment type + fallback,Adjustment type FK
-EDW_PREPROD.assumed.FactClaim,Orig_DimCurrencyID,EDW_PREPROD.assumed.DimCurrency,dac.DimCurrencyID,Lookup from TIRS currency name / code + fallback,Original currency FK
-EDW_PREPROD.assumed.FactClaim,Settl_DimCurrencyID,EDW_PREPROD.assumed.DimCurrency,dac.DimCurrencyID,Lookup from settlement currency + fallback,Settlement currency FK
-EDW_PREPROD.assumed.FactClaim,DimLineOfBusinessID,EDW_PREPROD.assumed.DimLineOfBusiness,dlob.DimLineOfBusinessID,Lookup on LOB name + fallback,LOB FK
-EDW_PREPROD.assumed.FactClaim,OrigRpt1_DimExchangeRateID,EDW_PREPROD.assumed.DimExchangeRate,daer.DimExchangeRateID,Lookup on reporting currency 1 + month,Original exchange rate FK
-EDW_PREPROD.assumed.FactClaim,OrigRpt2_DimExchangeRateID,EDW_PREPROD.assumed.DimExchangeRate,daer.DimExchangeRateID,Lookup on reporting currency 2 + month,Original exchange rate FK
-EDW_PREPROD.assumed.FactClaim,SettlRpt1_DimExchangeRateID,EDW_PREPROD.assumed.DimExchangeRate,daer.DimExchangeRateID,Lookup on settlement currency + month,Settlement exchange rate FK
-EDW_PREPROD.assumed.FactClaim,SettlRpt2_DimExchangeRateID,EDW_PREPROD.assumed.DimExchangeRate,daer.DimExchangeRateID,Lookup on settlement currency + month,Settlement exchange rate FK
-EDW_PREPROD.assumed.FactClaim,DimTransactionTypeID,EDW_PREPROD.assumed.DimTransactionType,dtt.DimTransactionTypeID,Lookup by transaction code + fallback,Transaction type FK
-EDW_PREPROD.assumed.FactClaim,DimDueDateID,EDW_PREPROD.assumed.DimDate,ddd.DimDateID,Lookup on DueDate with Uncoded/NA fallback,DueDate FK
-EDW_PREPROD.assumed.FactClaim,DimFromDateID,EDW_PREPROD.assumed.DimDate,ddd.DimDateID,Lookup on acct_from_dt with Uncoded/NA fallback,FromDate FK
-EDW_PREPROD.assumed.FactClaim,DimToDateID,EDW_PREPROD.assumed.DimDate,ddd.DimDateID,Lookup on acct_to_dt with Uncoded/NA fallback,ToDate FK
-EDW_PREPROD.assumed.FactClaim,DimPayeeID,EDW_PREPROD.assumed.DimPayee,dp.DimPayeeID,Lookup on payee / bill_company/road mapping + fallback,Payee foreign key
-EDW_PREPROD.assumed.FactClaim,AdjustedTCodeL04,EDW_PREPROD.dbo.T_Code_History / TIRS_CATCODE_HISTORY,"Boolean flag set during T-code history revision",Derived business rule,Tracks whether L04 was adjusted during T-code history processing
-EDW_PREPROD.assumed.FactClaim,DimDocumentID,EDW_PREPROD.assumed.DimDocument,dd.DimDocumentID,Lookup on doc_key + fallback,Document FK
+Target_Table~Target_Column~Source_Objects~Source_Expression_or_Column~Transformation~Notes
+EDW_PREPROD.assumed.FactClaim~ClaimLoadWideID~#ClaimLoadWide (temp staging)~IDENTITY()~Identity staging key~Staging-only surrogate; not final target fact key
+EDW_PREPROD.assumed.FactClaim~TREATY_NBR~#BaseKey; SRC_TIRS_DB.dbo.acct_doc ad; SRC_TIRS_DB.dbo.trty_master tm; assumed.DimContract~BK.Treaty_NBR; ad.trty_no; tm.trty_no~TRIM/CAT(CONCAT)~Derived from acct_doc/trty_master mapping used to build #BaseKey
+EDW_PREPROD.assumed.FactClaim~UNDERWRITING_YEAR~#BaseKey; SRC_TIRS_DB.dbo.acct_doc ad; assumed.DimContract~BK.UNDERWRITING_YEAR; ad.und_yr~TRIM~From acct_doc und_yr or contract metadata
+EDW_PREPROD.assumed.FactClaim~CONTRACT_NBR~#BaseKey; SRC_TIRS_DB.dbo.acct_doc ad; assumed.DimContract; EDW_PREPROD.dbo.MAP_CONTRACT_EDW~BK.CONTRACT_NBR; CONCAT(ad.trty_no, ad.und_yr); MAP_CONTRACT_EDW.CONTRACT_NBR~TRIM/CONCAT~Primary contract number assembled from treaty and underwriting year or mapping table
+EDW_PREPROD.assumed.FactClaim~Ceded_CONTRACT_NBR~#BaseKey; SRC_TIRS_DB.dbo.trty_master ceded_tm; #AssumedCededLink~BK.Ceded_CONTRACT_NBR; ceded_tm.trty_no + ceded_tm.und_yr~TRIM/CONCAT~Ceded contract assembled when ceded_trty_key present
+EDW_PREPROD.assumed.FactClaim~SourceSystemKey~EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear pc; EDW_Staging.assumed.TIRSClaimLossPaidOSLR p~10000000000 + pc.byline_key OR 20000000000 + p.trans_key~CAST AS BIGINT~Constructed source-system unique key per staging feed
+EDW_PREPROD.assumed.FactClaim~TransactionTypeCode~EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear pc; EDW_Staging.assumed.TIRSClaimLossPaidOSLR p~pc.doc_type_cd OR p.trans_cd~CAST(... AS VARCHAR(10))~Document or transaction type from staging
+EDW_PREPROD.assumed.FactClaim~TransactionTypeCategory~CLM_LOAD logic; staging feed indicator~Literal 'Document Type' or 'Claim Transaction Type' depending on union branch~Literal assignment~Categorisation applied in CLM_LOAD
+EDW_PREPROD.assumed.FactClaim~DueDate~EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear pc; EDW_Staging.assumed.TIRSClaimLossPaidOSLR p~pc.due_dt OR p.entry_dt~Direct mapping~Due or entry date from staging
+EDW_PREPROD.assumed.FactClaim~acct_from_dt~EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear pc; EDW_Staging.assumed.TIRSClaimLossPaidOSLR p~pc.acct_from_dt OR p.FromDate~Direct mapping~Accounting from date
+EDW_PREPROD.assumed.FactClaim~acct_to_dt~EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear pc; EDW_Staging.assumed.TIRSClaimLossPaidOSLR p~pc.acct_to_dt OR p.ToDate~Direct mapping~Accounting to date
+EDW_PREPROD.assumed.FactClaim~doc_key~EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear pc; EDW_Staging.assumed.TIRS_UW_staging stg~pc.doc_key OR stg.doc_key~Direct mapping~Document key from staging (used to lookup DimDocument)
+EDW_PREPROD.assumed.FactClaim~ORIGCURR_CD~#BaseKey; SRC_TIRS_DB.dbo.xrf_curr_cds cn; SRC_TIRS_DB.dbo.acct_doc ad~BK.ORIGCURR_CD; cn.curr_iso_cd~TRIM~Original ISO currency code derived via currency cross-reference used when building #BaseKey
+EDW_PREPROD.assumed.FactClaim~TIRS_ORIG_CURR_CD~#BaseKey; SRC_TIRS_DB.dbo.acct_doc ad~BK.TIRS_ORIG_CURR_CD; ad.curr_cd~TRIM~Original TIRS currency code from acct_doc
+EDW_PREPROD.assumed.FactClaim~TIRS_ORIG_CURR_NAME~#BaseKey; SRC_TIRS_DB.dbo.xrf_curr_names cn~BK.TIRS_ORIG_CURR_NAME; cn.curr_nm~TRIM~Currency name used for DimCurrency lookup
+EDW_PREPROD.assumed.FactClaim~SETTL_CURR_CD~Staging feeds (pc/os/p); #FX; LOOKUP_GENIUS_CURRENCYRATES~settlement currency columns in staging or derived via FX mapping~Direct or derived from FX~Settlement currency when provided or derived
+EDW_PREPROD.assumed.FactClaim~lob_name~#BaseKey; SRC_TIRS_DB.dbo.xrf_lob_cds lob; EDW_Staging.assumed.*~BK.lob_name; lob.desc_txt~TRIM~LOB description from cross-reference
+EDW_PREPROD.assumed.FactClaim~AccidentYear~#BaseKey; EDW_PREPROD.assumed.DimAccidentYear; TIRS earning rates tables~BK.AccidentYear; ay.accidentyear~TRIM/LOOKUP~Accident year derived from contract/earning-rate joins or DimAccidentYear mapping
+EDW_PREPROD.assumed.FactClaim~aslob~#BaseKey; ASLOB mapping tables am/ame~BK.aslob; am.ASLOB~TRIM~ASLOB mapping from contract/ASLOB reference
+EDW_PREPROD.assumed.FactClaim~TIRS_UW_ASSM_CEDED_NAME~#BaseKey~CASE BK.assumed_ceded_flg WHEN 'C' THEN 'Ceded' WHEN 'A' THEN 'Assumed' END~Case~Readable assumed/ceded label
+EDW_PREPROD.assumed.FactClaim~reg_date~#BaseKey; SRC_TIRS_DB.dbo.acct_doc ad~BK.reg_date; COALESCE(ad.reg_dt, DATEADD(MONTH, DATEDIFF(MONTH,0, ad.create_dt),0))~COALESCE~Used to determine accounting period override
+EDW_PREPROD.assumed.FactClaim~Claim_NBR~EDW_Staging.assumed.TIRSClaimLossPaidOSLR p; other staging feeds~p.Claim_NBR or 'N/A' for document rows~Direct or literal~Claim number if present
+EDW_PREPROD.assumed.FactClaim~TIRS_CLM_CD~EDW_Staging.assumed.TIRSClaimLossPaidOSLR p~p.TIRS_CLM_CD~Direct mapping~Used to lookup TIRS_CATCODE_HISTORY
+EDW_PREPROD.assumed.FactClaim~CatCode~EDW_PREPROD.dbo.TIRS_CATCODE_HISTORY; #CatCodeRevisionExCatCodeCatKey; staging p~H.CatCode or derived #L04.CatCode~Lookup via TIRS_CLM_CD and pruned catcode history~Cat code derived from TIRS history
+EDW_PREPROD.assumed.FactClaim~CAT_KEY~EDW_PREPROD.dbo.TIRS_CATCODE_HISTORY; #L04~H.CAT_KEY~Direct from catcode history~Key used for deeper catcode joins
+EDW_PREPROD.assumed.FactClaim~solvency_II_regulatory_key~EDW_PREPROD.dbo.solvency_II_regulatory_etl; #BaseKey; EDW_Staging.assumed.*~solII.solvency_II_regulatory_key (joined on branch/product/LOB/ASLOB/contract flags)~Direct join~Regulatory mapping lookup
+EDW_PREPROD.assumed.FactClaim~CLAIMLOSSDATE~EDW_Staging.assumed.TIRSClaimLossPaidOSLR p~p.CLAIMLOSSDATE~Direct mapping~Claim loss date from staging
+EDW_PREPROD.assumed.FactClaim~bill_co_br_key~EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear pc; TIRS OS staging os~pc.bill_co_br_key OR os.bill_co_br_key~Direct mapping~Billing company/branch key from staging
+EDW_PREPROD.assumed.FactClaim~Summable_LOSS_PAID~EDW_Staging.assumed.TIRSAccountingLossPaidEarnedAccidentYear pc; EDW_Staging.assumed.TIRSOSLossEarnedAccidentYear os; EDW_Staging.assumed.TIRSClaimLossPaidOSLR p~ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE pc.Summable_LOSS_PAID END,0) OR os/p variants~CASE/ISNULL/CAST~Assumed-side loss paid; zeroed for ceded
+EDW_PREPROD.assumed.FactClaim~SUMMABLE_LOSS_PAID_USD~Same staging as above; #FX; LOOKUP_GENIUS_CURRENCYRATES~ISNULL(CASE ... pc.SUMMABLE_LOSS_PAID_USD END,0)~CASE/ISNULL~USD-converted value using FX lookups
+EDW_PREPROD.assumed.FactClaim~SUMMABLE_LAE~Same staging as above~ISNULL(CASE BK.assumed_ceded_flg WHEN 'C' THEN 0 ELSE pc.SUMMABLE_LAE END,0)~CASE/ISNULL~LAE amount mapping
+EDW_PREPROD.assumed.FactClaim~...~(Monetary fields repeat pattern)~Staging pc/os/p + #FX / LOOKUP_GENIUS_CURRENCYRATES + dim exchange rates~IIF/CASE to split to ceded vs assumed; ISNULL(...,0); CONVERT(MONEY, ...)~Monetary fields: replicated for many columns (Ceded/Assumed, USD conversions)
+EDW_PREPROD.assumed.FactClaim~FIRVIBNRBeg~Placeholders in CLM_LOAD~0~Literal 0~Placeholder reserved field
+EDW_PREPROD.assumed.FactClaim~Source~CLM_LOAD branch literals; staging source identifiers~'TIRS' or 'OPENBOX' etc~Literal~Source tag used to compute SourceID
+EDW_PREPROD.assumed.FactClaim~SourceID~Computed persisted column~CASE WHEN Source = 'TIRS' THEN 4 WHEN Source = 'OPENBOX' THEN 1 ELSE NULL END~Computed~Source numeric ID
+EDW_PREPROD.assumed.FactClaim~adjustmenttype~EDW_Staging.*; staging columns pc.adjustmenttype / p.adjustmenttype~stg.adjustmenttype or 'N/A'~Direct or fallback~Adjustment type
+EDW_PREPROD.assumed.FactClaim~T7_CODE/T8_CODE/T9_CODE/...~EDW_PREPROD.dbo.T_Code_History tch; #TCodeRevisionExASLOB; #CatCodeRevisionEx...~tch.T7_CODE etc or h.* after pruning~Lookup after T_Code_History revision~T-code derived fields from pruned history
+EDW_PREPROD.assumed.FactClaim~DimContractID~EDW_PREPROD.assumed.DimContract; assumed.DimContract; #ContractFilter~dc.DimContractID matched by CONTRACT_NBR and date validity~Lookup with fallback to DimContractUncoded/NA from #Parameters~FK to DimContract
+EDW_PREPROD.assumed.FactClaim~Ceded_DimContractID~EDW_PREPROD.assumed.DimContract; SRC_TIRS_DB.dbo.trty_master~DimContractID for CEDED_CONTRACT_NBR or lookup via trty_master~Lookup with fallback~FK to ceded contract
+EDW_PREPROD.assumed.FactClaim~Intended_DimAccountingPeriodID~EDW_PREPROD.assumed.DimAccountingPeriod; #ActualAccountingPeriodOverride; #AccountingPeriod~dap.DimAccountingPeriodID determined by reg_date override logic~Lookup/override~Accounting period intended for record
+EDW_PREPROD.assumed.FactClaim~DimAccidentYearID~EDW_PREPROD.assumed.DimAccidentYear; TIRS earning rates~Lookup by L04 or AccidentYear; fallback DimAccidentYearUncoded~FK to accident year dim
+EDW_PREPROD.assumed.FactClaim~DimAccountingID/Intended_DimAccountingID~EDW_PREPROD.assumed.DimAccounting; #DimAccountingPairing; T_Code_History~Derived using DimAccountingPairing mapping (GD1/TIRS ADJ rules)~Pairing rules to choose reporting GD1
+EDW_PREPROD.assumed.FactClaim~DimAdjustmentTypeID~EDW_PREPROD.assumed.DimAdjustmentType~Lookup by AdjustmentType with fallback DimAdjustmentTypeUncoded~FK
+EDW_PREPROD.assumed.FactClaim~Orig_DimCurrencyID/Settl_DimCurrencyID~EDW_PREPROD.assumed.DimCurrency; #BaseKey; SRC_TIRS_DB.dbo.xrf_curr_names~Lookup by currency name/code with fallback DimCurrencyUncoded/NA~Currency dimension FK
+EDW_PREPROD.assumed.FactClaim~OrigRpt1_DimExchangeRateID/...~EDW_PREPROD.assumed.DimExchangeRate; #FX; LOOKUP_GENIUS_CURRENCYRATES~Lookup on Reporting currency/month using #FX or DimExchangeRate; fallback DimExchangeRateUncoded~Exchange rate dim FK
+EDW_PREPROD.assumed.FactClaim~DimTransactionTypeID~EDW_PREPROD.assumed.DimTransactionType~Lookup by TransactionTypeCode with fallback DimTransactionTypeUncoded/NA~FK
+EDW_PREPROD.assumed.FactClaim~DimDueDateID/DimFromDateID/DimToDateID~EDW_PREPROD.assumed.DimDate~Lookup on due_date/acct_from_dt/acct_to_dt with fallback DimDateUncoded/NA~Date dim FKs
+EDW_PREPROD.assumed.FactClaim~DimPayeeID~EDW_PREPROD.assumed.DimPayee; assumed.BridgePayeeBankDetail~Lookup by bill_co_br_key or payee name with DimPayeeUncoded fallback~Payee FK
+EDW_PREPROD.assumed.FactClaim~AdjustedTCodeL04~T_Code_History revision; TIRS_CATCODE_HISTORY~Boolean flag computed during T-Code/ CatCode revision process~Derived flag indicating L04 was adjusted
+EDW_PREPROD.assumed.FactClaim~DimDocumentID~EDW_PREPROD.assumed.DimDocument; SRC_TIRS_DB.dbo.acct_doc~Lookup by doc_key with fallback DimDocumentUncoded/NA~Document FK
+EDW_PREPROD.assumed.FactClaim~Audit_and_ETL_fields~ETL.dbo.etl_controller; ETL.dbo.etl_history; #Timings~Various ETL timing and process columns written to ETL controller and #Timings~ETL control and audit
